@@ -1,0 +1,363 @@
+{
+    "FoodBanks":[
+        {
+            "Arvada":[
+                {
+                    "Name":"New Apostolic Church Food Pantry",
+                    "Phone":"720.722.3663",
+                    "Address":"5290 Vance St. Arvada, CO 80002",
+                    "Days":"Open every Wednesday",
+                    "calcDay1":"Wednesday",
+                    "calcDayNum1":"0",
+                    "StartTime":"09:00",
+                    "EndTime":"11:00"
+                }
+
+            ],
+            "Aurora":[
+                {
+                    "Name":"Ansar Pantry",
+                    "Phone":"303.459.2153",
+                    "Address":"6251 E. Colfax Ave #208",
+                    "Address2":"Aurora, CO  80011",
+                    "Days":"Each Saturday of each month.",
+                    "calcDay1":"Saturday",
+                    "calcDayNum1":"0",
+                    "StartTime":"09:00",
+                    "EndTime":"12:00"
+                },
+                {
+                    "Name":"Aurora Interfaith Community Services",
+                    "Phone":"303.360.0260",
+                    "Address":"1553 Clinton St. Aurora, CO  80010",
+                    "Days":"Monday, Tuesday & Friday",
+                    "calcDay1":"Monday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Tuesday",
+                    "calcDayNum2":"0",
+                    "calcDay3":"Friday",
+                    "calcDayNum3":"0",
+                    "StartTime":"08:30",
+                    "EndTime":"13:00",
+                    "Notes":"Call by 8:30AM for same day appointment"
+                },
+                {
+                    "Name":"Colfax Community Network",
+                    "Phone":"303.360.9175",
+                    "Address":"1585 Kingston St. Aurora, CO  80010",
+                    "Days":"Monday - Thursday",
+                    "calcDay1":"Monday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Tuesday",
+                    "calcDayNum2":"0",
+                    "calcDay3":"Wednesday",
+                    "calcDayNum3":"0",
+                    "calcDay4":"Thursday",
+                    "calcDayNum4":"0",
+                    "StartTime":"09:00",
+                    "EndTime":"12:00"
+                },
+                {
+                    "Name":"Friends of St. Andrew",
+                    "Phone":"303.364.2329",
+                    "Address":"1525 Dallas St.",
+                    "Address2":"Aurora, CO  80010",
+                    "Days":"Monday-Friday",
+                    "calcDay1":"Monday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Tuesday",
+                    "calcDayNum2":"0",
+                    "calcDay3":"Wednesday",
+                    "calcDayNum3":"0",
+                    "calcDay4":"Thursday",
+                    "calcDayNum4":"0",
+                    "calcDay5":"Friday",
+                    "calcDayNum5":"0",
+                    "StartTime":"10:15",
+                    "EndTime":"13:15",
+                    "Notes":"Residents of Aurora only"
+                },
+                {
+                    "Name":"Restoration Outreach Programs",
+                    "Phone":"720.859.2513",
+                    "Address":"1540 Boston St.",
+                    "Address2":"Aurora, CO  80010",
+                    "Days":"Every Tuesday",
+                    "calcDay1":"Tuesday",
+                    "calcDayNum1":"0",
+                    "StartTime":"11:30",
+                    "EndTime":"12:30"
+                }
+            ],
+            "Bennett":[
+                {
+                    "Name":"Bennett Community Food Bank",
+                    "Phone":"303.644.3249",
+                    "Address":"401 S. 1st St.",
+                    "Address2":"Bennett, CO  80102",
+                    "Days":"Open first and third Saturday of every month",
+                    "calcDay1":"Saturday",
+                    "calcDayNum1":"1",
+                    "calcDay2":"Saturday",
+                    "calcDayNum2":"3",
+                    "StartTime":"09:00",
+                    "EndTime":"11:00"
+                }
+            ],
+            "Brighton":[
+                {
+                    "Name":"Calvary Chapel",
+                    "Phone":"303.659.1886",
+                    "Address":"103 E. Bridge St.",
+                    "Address2":"Brighton, CO 80601",
+                    "Days":"Second and Fourth Monday",
+                    "calcDay1":"Monday",
+                    "calcDayNum1":"2",
+                    "calcDay2":"Monday",
+                    "calcDayNum2":"4",
+                    "StartTime":"17:00",
+                    "EndTime":"18:30"
+                },
+                {
+                    "Name":"Chapel Hill",
+                    "Phone":"303.659.0745",
+                    "Address":"10 Chapel Hill Dr.",
+                    "Address2":"Brighton, CO 80601",
+                    "Days":"Second and Fourth Wednesday",
+                    "calcDay1":"Wednesday",
+                    "calcDayNum1":"2",
+                    "calcDay2":"Wednesday",
+                    "calcDayNum2":"4",
+                    "StartTime":"16:00",
+                    "EndTime":"17:30"
+                },
+                {
+                    "Name":"Mobile Food Pantry (FBR)",
+                    "Phone":"303.371.9250",
+                    "Address":"22 S 4th St.",
+                    "Address2":"Brighton, CO 80601",
+                    "Days":"Second Saturday at 9:00AM",
+                    "calcDay1":"Saturday",
+                    "calcDayNum1":"2",
+                    "StartTime":"09:00",
+                    "EndTime":"18:00",
+                    "Notes":"ending when all the food is gone."
+                },
+                {
+                    "Name":"St. Augustine's Community Food Pantry",
+                    "Phone":"303.654.1040",
+                    "Address":"129 S. 6th Ave.",
+                    "Address2":"Brighton, CO 80601",
+                    "Days":"Tuesdays and Thursdays",
+                    "calcDay1":"Tuesday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Thursday",
+                    "calcDayNum2":"0",
+                    "StartTime":"09:00",
+                    "EndTime":"13:00"
+                }
+            ],
+            "Commerce City":[
+                {
+                    "Name":"Adams County Food Bank",
+                    "Phone":"720.878.3563",
+                    "Address":"7111 E. 56th Ave.",
+                    "Address2":"Commerce City, CO 80022",
+                    "Days":"Wednesday, Thursday & Friday",
+                    "calcDay1":"Wednesday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Thursday",
+                    "calcDayNum2":"0",
+                    "calcDay3":"Friday",
+                    "calcDayNum3":"0",
+                    "StartTime":"10:00",
+                    "EndTime":"14:00"
+                },
+
+                {
+                    "Name":"Impacto De Fe",
+                    "Phone":"303.403.2744",
+                    "Address":"5155 E. 64th Ave.",
+                    "Address2":"Commerce City, CO 80022",
+                    "Days":"Every Saturday 7:30AM - 10:00AM",
+                    "calcDay1":"Saturday",
+                    "calcDayNum1":"0",
+                    "StartTime":"07:00",
+                    "EndTime":"10:00"
+                },
+
+                {
+                    "Name":"Mobile Food Pantry (FBR) Dick's Sporting Goods Park",
+                    "Phone":"303.371.9250",
+                    "Address":"6000 Victory Way",
+                    "Address2":"Commerce City, CO 80022",
+                    "Days":"First and third Friday at 9:00am and ending when the food is gone.",
+                    "calcDay1":"Friday",
+                    "calcDayNum1":"1",
+                    "calcDay2":"Friday",
+                    "calcDayNum2":"3",
+                    "StartTime":"09:00",
+                    "EndTime":"17:00"
+                },
+
+                {
+                    "Name":"Our Savior Lutheran Church",
+                    "Phone":"303.288.9577",
+                    "Address":"6770 Monaco St.",
+                    "Address2":"Commerce City, CO 80022",
+                    "Days":"Every Day 9:00am - 12:00pm",
+                    "calcDay1":"Monday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Tuesday",
+                    "calcDayNum2":"0",
+                    "calcDay3":"Wednesday",
+                    "calcDayNum3":"0",
+                    "calcDay4":"Thursday",
+                    "calcDayNum4":"0",
+                    "calcDay5":"Friday",
+                    "calcDayNum5":"0",
+                    "calcDay6":"Saturday",
+                    "calcDayNum6":"0",
+                    "calcDay7":"Sunday",
+                    "calcDayNum7":"0",
+                    "StartTime":"09:00",
+                    "EndTime":"12:00",
+                    "Notes":"Residents of Commerce City only"
+                }
+
+            ],
+            "Denver":[
+                {
+                    "Name":"Bienvenidos Food Bank",
+                    "Phone":"303.433.6328",
+                    "Address":"3810 Pecos St.",
+                    "Address2":"Denver, CO 80211",
+                    "Days":"Open every Thursday at this location except the 3rd Thursday of the month",
+                    "calcDay1":"Thursday",
+                    "calcDayNum1":"1",
+                    "calcDay2":"Thursday",
+                    "calcDayNum2":"2",
+                    "calcDay3":"Thursday",
+                    "calcDayNum3":"4",
+                    "calcDay4":"Thursday",
+                    "calcDayNum4":"5",
+                    "StartTime":"11:00",
+                    "EndTime":"17:30",
+                    "Notes":"11am-12pm & 4pm-5:30pm"
+                },
+                {
+                    "Name":"Servicios de la Raza",
+                    "Phone":"303.458.5851",
+                    "Address":"3131 W. 14th Ave.",
+                    "Address2":"Denver, CO  80204",
+                    "Days":"Wednesday (1:30pm - 3pm) and Fridays (9:30am - 11am)",
+                    "calcDay1":"Wednesday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Friday",
+                    "calcDayNum2":"0",
+                    "StartTime":"09:30",
+                    "EndTime":"15:00"
+                },
+                {
+                    "Name":"The Salvation Army West Adams",
+                    "Phone":"303.428.6430",
+                    "Address":"2821 W. 65th Pl.",
+                    "Address2":"Denver, CO  80221",
+                    "Days":"Tuesday, Wednesday & Thursday (10am-12pm & 1pm - 3pm)",
+                    "calcDay1":"Tuesday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Wednesday",
+                    "calcDayNum2":"0",
+                    "calcDay3":"Thursday",
+                    "calcDayNum3":"0",
+                    "StartTime":"10:00",
+                    "EndTime":"15:00"
+                }
+
+            ],
+            "Federal Heights":[
+                {
+                    "Name":"Senior Hub",
+                    "Phone":"303.426.4408",
+                    "Address":"9025 Grand St. Suite 150",
+                    "Address2":"Thornton, CO  80229",
+                    "Days":"Monday - Thursday",
+                    "calcDay1":"Monday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Tuesday",
+                    "calcDayNum2":"0",
+                    "calcDay3":"Wednesday",
+                    "calcDayNum3":"0",
+                    "calcDay4":"Thursday",
+                    "calcDayNum4":"0",
+                    "StartTime":"08:30",
+                    "EndTime":"16:30",
+                    "Notes":"By appointment only"
+                },
+                {
+                    "Name":"Thrive Church",
+                    "Phone":"303.428.9535",
+                    "Address":"2820 W. 92nd Ave.",
+                    "Address2":"Federal Heights, CO  80260",
+                    "Days":"Every Friday (11am-1pm)",
+                    "calcDay1":"Friday",
+                    "calcDayNum1":"0",
+                    "StartTime":"11:00",
+                    "EndTime":"13:00"
+                }
+            ],
+            "Northglenn":[
+                {
+                    "Name":"Good Sheperd Presbyterian Food Bank",
+                    "Phone":"303.452.5478",
+                    "Address":"10785 Melody Dr.",
+                    "Address2":"Northglenn, CO  80234",
+                    "Days":"Tuesday-Friday (10am-11:45am) First Thursday of each month (6:30pm-8pm)",
+                    "calcDay1":"Tuesday",
+                    "calcDayNum1":"0",
+                    "calcDay2":"Wednesday",
+                    "calcDayNum2":"0",
+                    "calcDay3":"Thursday",
+                    "calcDayNum3":"0",
+                    "calcDay4":"Friday",
+                    "calcDayNum4":"0",
+                    "StartTime":"09:00",
+                    "EndTime":"11:00"
+                }
+            ],
+            "Thornton":[
+                {
+                    "Name":"Bennett Community Food Bank",
+                    "Phone":"303.644.3249",
+                    "Address":"401 S. 1st St.",
+                    "Address2":"Bennett, CO  80102",
+                    "Days":"Open first and third Saturday of every month",
+                    "calcDay1":"Saturday",
+                    "calcDayNum1":"1",
+                    "calcDay2":"Saturday",
+                    "calcDayNum2":"3",
+                    "StartTime":"09:00",
+                    "EndTime":"11:00"
+                }
+            ],
+            "Westminster":[
+                {
+                    "Name":"Bennett Community Food Bank",
+                    "Phone":"303.644.3249",
+                    "Address":"401 S. 1st St.",
+                    "Address2":"Bennett, CO  80102",
+                    "Days":"Open first and third Saturday of every month",
+                    "calcDay1":"Saturday",
+                    "calcDayNum1":"1",
+                    "calcDay2":"Saturday",
+                    "calcDayNum2":"3",
+                    "StartTime":"09:00",
+                    "EndTime":"11:00"
+                }
+            ]
+
+
+
+        }
+    ]
+}
