@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script>
+    function getNumber() {
+        return Math.floor(Math.random() *10);
+    }
+    function hideProblems(){
+        document.getElementById("problems").style.display = "none"; 
+    }
+    function showProblems(){
+        var c=0;
+        for(x=1;x<11;x++) {
+            document.getElementById(x+"a").innerText = getNumber();
+            document.getElementById(x+"b").innerText = getNumber();
+            c=parseInt(document.getElementById(x+"a").innerText) + parseInt(document.getElementById(x+"b").innerText);
+            console.log("c=  "+ c);
+            document.getElementById(x+"d").name="ans"+c;
+
+        }
+
+        document.getElementById("problems").style.display = "block";
+    }
+    function checkValues() {
+        for(x=1;x<11;x++) {
+        c="ans"+parseInt(document.getElementById(x+"d").value);
+        n=document.getElementById(x+"d").name;
+        console.log(c===n);
+        }
+    }
+</script>
+<title>Project-Math Addition</title>
+</head>
+<body>
+    INSTRUCTIONS: <br>
+<ol>
+    <li>Click start when ready</li>
+    <li>Answer 10 math problems as fast as possible</li>
+    <li>Statistics are displayed when complete.</li>
+</ol>
+
+<button onclick="showProblems()">START</button>
+<div id="problems">
+    <div class="row">
+        <div class="col-1">
+        </div> 
+        <div class="col-md-2">
+            <div id="1a">number</div>
+            <div>+</div>
+            <div id="1b">number</div>
+            <div><hr></div>
+            <div id="1c"><input type="text" name="" id="1d"></div>
+        </div>
+        <div class="col-md-2">
+            <div id="2a">number</div>
+            <div>+</div>
+            <div id="2b">number</div>
+            <div><hr></div>
+            <div id="2c"><input type="text" name="" id="2d"></div>
+        </div> 
+        <div class="col-md-2">
+            <div id="3a">number</div>
+            <div>+</div>
+            <div id="3b">number</div>
+            <div><hr></div>
+            <div id="3c"><input type="text" name="" id="3d"></div>
+        </div>
+        <div class="col-md-2">
+            <div id="4a">number</div>
+            <div>+</div>
+            <div id="4b">number</div>
+            <div><hr></div>
+            <div id="4c"><input type="text" name="" id="4d"></div>
+        </div> 
+        <div class="col-md-2">
+            <div id="5a">number</div>
+            <div>+</div>
+            <div id="5b">number</div>
+            <div><hr></div>
+            <div id="5c"><input type="text" name="" id="5d"></div>
+        </div>
+        <div class="col-1">
+        </div>         
+    </div>
+
+    <div class="row">
+        <div class="col-1">
+        </div> 
+        <div class="col-md-2">
+            <div id="6a">number</div>
+            <div>+</div>
+            <div id="6b">number</div>
+            <div><hr></div>
+            <div id="6c"><input type="text" name="" id="6d"></div>
+        </div>
+        <div class="col-md-2">
+            <div id="7a">number</div>
+            <div>+</div>
+            <div id="7b">number</div>
+            <div><hr></div>
+            <div id="7c"><input type="text" name="" id="7d"></div>
+        </div> 
+        <div class="col-md-2">
+            <div id="8a">number</div>
+            <div>+</div>
+            <div id="8b">number</div>
+            <div><hr></div>
+            <div id="8c"><input type="text" name="" id="8d"></div>
+        </div>
+        <div class="col-md-2">
+            <div id="9a">number</div>
+            <div>+</div>
+            <div id="9b">number</div>
+            <div><hr></div>
+            <div id="9c"><input type="text" name="" id="9d"></div>
+        </div> 
+        <div class="col-md-2">
+            <div id="10a">number</div>
+            <div>+</div>
+            <div id="10b">number</div>
+            <div><hr></div>
+            <div id="10c"><input type="text" name="" id="10d"></div>
+        </div>
+        <div class="col-1">
+        </div>         
+    </div>
+    <button onclick="checkValues()">STOP</button>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+        hideProblems();
+</script>
+</body>
+</html>

@@ -87,6 +87,12 @@
                         A work in progress.<br /><br />
 
                     </li>
+                    
+                    <li>
+
+                        <a href="apps/arithmetic/index.html" target="_new">Arithmetic</a> - Math program gives you 10 math problems.<br /><br />
+
+                    </li>
                 </ul>
 
 
