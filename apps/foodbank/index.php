@@ -22,7 +22,12 @@
     // as well as the nth day of the month (3rd Wednesday)
     // console.log(dayofweek + " " + getNumber())
 
-    var weekday = new Array(7);
+    // 4 dates are used with these functions
+    // weekday = An array that consists of the days of the week
+    // d = today's current date.
+    // dayofweek = today's day of week in words
+
+    const weekday = new Array(7);
 
     weekday[0] = "Sunday";
     weekday[1] = "Monday";
@@ -32,16 +37,20 @@
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
 
-    var d = new Date();
+    const d = new Date();
 
-    var dayofweek = weekday[d.getDay()];
+    const dayofweek = weekday[d.getDay()];
 
 
-    function getNumber() {
+
+    // This function goes from the first day of the month to current day
+    // and for every day of the week that equals today's weekday, getNum is incremented.
+    // getNum is returned  indicating the nth weekday of the month.
+    const getNumber = () => {
         getNum = 0;
 
         //first day of month
-        var runningDate = new Date(d.getFullYear(), d.getMonth(), 1);
+        let runningDate = new Date(d.getFullYear(), d.getMonth(), 1);
 
         while (runningDate <= d) {
 
@@ -56,93 +65,62 @@
         return getNum;
     }
 
+
+    const getLinkMapLocation = objElement => {
+
+        let myLink = "<a href='https://www.google.com/maps/place/";
+
+        myLink += encodeURIComponent(objElement.Address);
+
+        if (typeof objElement.Address2 !== 'undefined') {
+            myLink += encodeURIComponent(" " + objElement.Address2);
+        }
+
+        myLink += "' target='_new'>";
+
+        return myLink;
+
+    }
+
+
+
     // console.log(d);
-    </script>
 
-</head>
+    const chkAllDays = (fbStatus, chkDay, chkDayNum) => {
+        // chkDay = objElement.calcDay1;
+        // chkDayNum = objElement.calcDayNum1;
 
-<body>
+        if (fbStatus == "*** OPEN ***") return "*** OPEN ***";
 
-    <h1 class="text-center">Food Banks</h1>
-    <div id="FoodBanks"></div>
+        if (chkDay !== 'undefined' && chkDayNum !== 'undefined') {
 
-    <script>
+            if (chkDay == dayofweek && (chkDayNum == "0" || chkDayNum == getNumber())) {
+                return "*** OPEN ***"
+            }
 
-    function chkStatus(objElement) {
+        }
+        return "*** Closed ***";
+
+    }
+
+    const chkStatus = (objElement) => {
 
         // default to close
-        var fbStatus = "*** Closed ***";
-        var chkDay = "";
-        var chkDayNum = "";
-        // check day1 to see if open
-        // check daynum1 to see if open
+        let fbStatus = "*** Closed ***";
 
+         fbStatus = chkAllDays(fbStatus, objElement.calcDay1, objElement.calcDayNum1);
+         fbStatus = chkAllDays(fbStatus, objElement.calcDay2, objElement.calcDayNum2);
+         fbStatus = chkAllDays(fbStatus, objElement.calcDay3, objElement.calcDayNum3);
+         fbStatus = chkAllDays(fbStatus, objElement.calcDay4, objElement.calcDayNum4);
+         fbStatus = chkAllDays(fbStatus, objElement.calcDay5, objElement.calcDayNum5);
+         fbStatus = chkAllDays(fbStatus, objElement.calcDay6, objElement.calcDayNum6);
+         fbStatus = chkAllDays(fbStatus, objElement.calcDay7, objElement.calcDayNum7);
 
-        chkDay = objElement.calcDay1;
-        chkDayNum = objElement.calcDayNum1;
+        // console.log(objElement);
 
-        if (chkDay !== 'undefined' && chkDayNum !== 'undefined') {
+        //console.log(objElement.calcDay1);
 
-            if (chkDay == dayofweek && (chkDayNum == "0" || chkDayNum == getNumber())) {
-                return "*** OPEN ***"
-            }
-
-        }
-
-
-        chkDay = objElement.calcDay2;
-        chkDayNum = objElement.calcDayNum2;
-
-        if (chkDay !== 'undefined' && chkDayNum !== 'undefined') {
-
-            if (chkDay == dayofweek && (chkDayNum == "0" || chkDayNum == getNumber())) {
-                return "*** OPEN ***"
-            }
-
-        }
-
-
-        chkDay = objElement.calcDay3;
-        chkDayNum = objElement.calcDayNum3;
-
-        if (chkDay !== 'undefined' && chkDayNum !== 'undefined') {
-
-            if (chkDay == dayofweek && (chkDayNum == "0" || chkDayNum == getNumber())) {
-                return "*** OPEN ***"
-            }
-
-        }
-
-
-        chkDay = objElement.calcDay4;
-        chkDayNum = objElement.calcDayNum4;
-
-        if (chkDay !== 'undefined' && chkDayNum !== 'undefined') {
-
-            if (chkDay == dayofweek && (chkDayNum == "0" || chkDayNum == getNumber())) {
-                return "*** OPEN ***"
-            }
-
-        }
-
-
-        chkDay = objElement.calcDay5;
-        chkDayNum = objElement.calcDayNum5;
-
-        if (chkDay !== 'undefined' && chkDayNum !== 'undefined') {
-
-            if (chkDay == dayofweek && (chkDayNum == "0" || chkDayNum == getNumber())) {
-                return "*** OPEN ***"
-            }
-
-        }
-
-
-        console.log(objElement);
-
-        console.log(objElement.calcDay1);
-
-        console.log(objElement.calcDayNum1);
+        //console.log(objElement.calcDayNum1);
 
         return fbStatus;
 
@@ -150,41 +128,25 @@
 
 
 
-    function writeBlock(objElement) {
+    const writeBlock = objElement => {
 
-        var mySubString = "";
-
-        //mySubString += "<div class='col-sm-12 col-md-6 col-lg-2'>";
-
-        mySubString += "<div class='card' style='min-width: 12rem';>";
-        mySubString += "<div class='card-body'>";
-
-        mySubString += "<h5 class='card-title'>"
-
-        mySubString += objElement.Name;
-        mySubString += "</h5><br>";
-
-        mySubString += objElement.Phone;
-        mySubString += "<br>";
-
-        mySubString += getLinkMapLocation(objElement);
-        mySubString += objElement.Address;
-
+        let mySubString = `
+<div class='card' style='min-width: 12rem';>
+  <div class='card-body'>
+    <h5 class='card-title'>${objElement.Name}</h5><br>
+      ${objElement.Phone}<br>
+      ${getLinkMapLocation(objElement)}${objElement.Address}
+      `
 
         if (typeof objElement.Address2 !== 'undefined') {
-            mySubString += "<br>";
-            mySubString += objElement.Address2;
-            mySubString += "<br>";
+            mySubString += "<br>" + objElement.Address2 + "<br>";
         }
 
-        mySubString += "</br>";
-        mySubString += "</a>";
+        mySubString += `</br></a>
 
-        mySubString += objElement.Days;
-        mySubString += "<br>";
-
-        mySubString += objElement.StartTime + "-" + objElement.EndTime;
-        mySubString += "<br>";
+      ${objElement.Days}<br>
+      ${objElement.StartTime} - ${objElement.EndTime}<br>
+      `
 
         if (typeof objElement.Notes !== 'undefined') {
             mySubString += objElement.Notes;
@@ -217,37 +179,26 @@
 
 
 
-    function getLinkMapLocation(objElement) {
+</script>
 
-        var myLink = "<a href='https://www.google.com/maps/place/";
+</head>
 
-        myLink += encodeURIComponent(objElement.Address);
+<body>
 
-        if (typeof objElement.Address2 !== 'undefined') {
-            myLink += encodeURIComponent(" " + objElement.Address2);
-        }
+    <h1 class="text-center">Food Banks</h1>
+    <div id="FoodBanks"></div>
 
-        myLink += "' target='_new'>";
+    <script>
 
-        return myLink;
-
-    }
-
-
-
-
-
-
-
-    var xmlhttp = new XMLHttpRequest();
+    const xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
 
         if (this.readyState == 4 && this.status == 200) {
 
-            var myObj = JSON.parse(this.responseText);
-            var arrayLen = 0;
-            var myString = "";
+            const myObj = JSON.parse(this.responseText);
+            let arrayLen = 0;
+            let myString = "";
             var cityNoSpace = "";
 
 
@@ -260,32 +211,32 @@
                 //console.log(myObj.FoodBanks[0][city].length);
 
                 arrayLen = myObj.FoodBanks[0][city].length
-                myString += '\r\n\r\n'
+                myString += `
+                
+<section id='${cityNoSpace}'>
+  <div style='padding-top:40px;'><div class='container'>
+    <h2><button type='button' data-toggle='collapse' data-target='#collapse${cityNoSpace}' aria-expanded='true' aria-controls='collapse${cityNoSpace}'>
+    ${city}</button></h2>
+  </div></div>
 
-                myString += "<section id='" + cityNoSpace + "'>";
+  <div id='collapse${cityNoSpace}' class='card-deck collapse hide' aria-labelledby='headingOne' data-parent='#${cityNoSpace}'>
 
-                myString += "<div style='padding-top:40px;'><div class='container'>";
-                myString += "<h2><button type='button' data-toggle='collapse' data-target='#collapse"+cityNoSpace+"' aria-expanded='true' aria-controls='collapse"+cityNoSpace+"'>" + city + "</button></h2>";
-                myString += "</div></div>";
-
-                myString += '\r\n\r\n'
-
-                myString += "<div id='collapse"+cityNoSpace+"' class='card-deck collapse hide' aria-labelledby='headingOne' data-parent='#"+cityNoSpace+"'>";
-
+`
                 for (icnt = 0; icnt < arrayLen; icnt++) {
                     myString += writeBlock(myObj.FoodBanks[0][city][icnt]);
                 }
 
-                myString += "</div>";
+                myString += `
+  </div>
+</section>
+ 
 
-                myString += "</section>";
-                myString += '\r\n\r\n'
-
+ `
             }
 
             document.getElementById("FoodBanks").innerHTML = myString;
 
-            console.log(myObj);
+            //console.log(myObj);
 
             console.log(myString);
 
