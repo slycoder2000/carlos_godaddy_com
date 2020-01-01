@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Looping a Triangle</h1>
+    <p>Write a loop that makes sevel calls to console.log to output the following triangle:
+     <p>
+         *<br>
+         **<br>
+         ***<br>
+         ****<br>
+         *****<br>
+         ******<br>
+         *******<br>
+
+        </p>
+        <script>
+            let strRow="";
+        for(let row=1;row<=7;row++) {
+            strRow="";
+            for(let item=1;item<=row;item++) strRow+="*";
+            console.log(strRow);
+        }
+        </script>
+    </p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Bean Counting</h1>
+		<p>Create a function countBs that will count the number of uppercase 'B' in a given string.</p>
+		<p>
+			Create another function countChar that will accept two parameters, a given string and a given character.
+			Return the number of characters in the string.
+		</p>
+		<p>Rewrite the countBs function to utilize the countChar function</p>
+
+		<script>
+			const firstCountBs = strParam => {
+				let countB = 0;
+				//console.log(strParam);
+				for (let pos = 0; pos < strParam.length; pos++) {
+					//console.log(strParam[pos] + '  ' + countB);
+					if (strParam[pos] == 'B') countB++;
+				}
+				return countB;
+			};
+
+			const countBs = strParam => {
+				return countChar(strParam, 'B');
+			};
+
+			const countChar = (strParam, chrParam) => {
+				let countChr = 0;
+				//console.log(strParam);
+				for (let pos = 0; pos < strParam.length; pos++) {
+					//console.log(strParam[pos] + '  ' + countB);
+					if (strParam[pos] == chrParam) countChr++;
+				}
+				return countChr;
+			};
+
+			console.log(countBs('BounBBBBBce'));
+		</script>
+	</body>
+</html>

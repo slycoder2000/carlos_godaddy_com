@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Chapter 4 - Vue From Scratch</title>
+		<script src="/scripts/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>Price <input type="text" v-model="price" /></div>
+			<div>Tax {{taxFormatted}}</div>
+			<div>Total {{total}}</div>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+
+				data: {
+					price: 100
+				},
+				computed: {
+					tax: function() {
+						return this.price * 0.1;
+					},
+
+					taxFormatted: function() {
+						return '$' + this.tax;
+					},
+
+					total: function() {
+						return parseInt(this.price) + this.tax;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

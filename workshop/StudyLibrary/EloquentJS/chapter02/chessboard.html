@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Chessboard</h1>
+		<p>
+			Write a program that creates a string that represents an 8x8 grid, using new-line characters to separate
+			lines. At each position of the grid there is either a space or a # character. The characters should form a
+			chessboard. Passing this string to console.log should show something like this:
+		</p>
+		<p>
+			&nbsp;# # # #<br />
+			# # # #<br />
+			&nbsp;# # # #<br />
+			# # # #<br />
+			&nbsp;# # # #<br />
+			# # # #<br />
+			&nbsp;# # # #<br />
+			# # # #<br />
+		</p>
+		<p>
+			When you have a program that generates this pattern, define a binding size=8 and change the program so that
+			it works for any size, outputting a grid of the given width and height.
+		</p>
+
+		<script>
+			let size = 8;
+			let chessboard = '';
+
+			for (let row = 1; row <= size; row++) {
+				if (row % 2 == 0) {
+					for (column = 1; column <= size; column++) {
+						if (column % 2 == 0) {
+							chessboard += ' ';
+						} else {
+							chessboard += '#';
+						}
+					}
+				} else {
+					for (column = 1; column <= size; column++) {
+						if (column % 2 == 0) {
+							chessboard += '#';
+						} else {
+							chessboard += ' ';
+						}
+					}
+				}
+
+				chessboard += '\n';
+			}
+			console.log(chessboard);
+		</script>
+	</body>
+</html>

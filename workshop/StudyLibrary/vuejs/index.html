@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Chapter 1 - Vue From Scratch</title>
+		<script src="/scripts/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-bind:title="menu">{{ title }}</h1>
+			<p v-text="content"></p>
+			<input type="text" name="" id="" v-model="content" />
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+
+				data: {
+					title: 'My Title',
+					content: 'Here is my text.',
+					menu: 'My menu data here'
+				}
+			});
+		</script>
+	</body>
+</html>

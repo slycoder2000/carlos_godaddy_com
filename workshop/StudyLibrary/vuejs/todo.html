@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Chapter 2 - Vue From Scratch</title>
+		<script src="/scripts/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="todo in items">{{todo}}</li>
+			</ul>
+			<input type="text" name="" id="" v-model="item" />
+			<button @click="items.push(item)">Add Item</button>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+
+				data: {
+					item: '',
+					items: ['item1', 'item2']
+				}
+			});
+		</script>
+	</body>
+</html>

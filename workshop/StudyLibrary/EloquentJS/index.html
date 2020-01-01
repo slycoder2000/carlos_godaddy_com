@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Eloquent Javascript</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/scripts/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/app.css">
+
+  <script src="../js/scripts.js"></script>
+
+  <script>
+      function openSideMenu() {
+          document.getElementById("side-menu").style.width = "250px";
+          document.getElementById("wrapper").style.marginLeft = "250px";
+      }
+
+      function closeSideMenu() {
+          document.getElementById("side-menu").style.width = "0";
+          document.getElementById("wrapper").style.marginLeft = "0";
+      }
+
+</script>
+
+</head>
+
+<body>
+
+<!--Nav-->
+<div id="wrapper" class="small-container">
+
+    <div id="driver-nav">
+
+
+    <!-- Nav -->
+    <span class="open-slide">
+        <a href="#" onClick="openSideMenu();">
+            <svg width="30" height="30">
+                <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
+                <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
+                <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
+
+            </svg>
+        </a>
+    </span>
+    <div id="side-menu" class="side-nav">
+        <a href="#" onClick="closeSideMenu();" class="btn-close">&times;</a>
+        <a href="_top">Home</a>
+        <a href="#chptr01">Chapter 01</a>
+        <a href="#chptr02">Chapter 02</a>
+        <a href="#chptr03">Chapter 03</a>
+        <a href="#chptr04">Chapter 04</a>
+        <a href="#chptr05">Chapter 05</a>
+        <a href="#chptr06">Chapter 06</a>
+        <a href="#chptr07">Chapter 07</a>
+        <a href="#chptr08">Chapter 08</a>
+        <a href="#chptr09">Chapter 09</a>
+        <a href="#chptr10">Chapter 10</a>
+        <a href="#chptr11">Chapter 11</a>
+        <a href="#chptr12">Chapter 12</a>
+        <a href="#chptr13">Chapter 13</a>
+        <a href="#chptr14">Chapter 14</a>
+        <a href="#chptr15">Chapter 15</a>
+        <a href="#chptr16">Chapter 16</a>
+        <a href="#chptr17">Chapter 17</a>
+        <a href="#chptr18">Chapter 18</a>
+        <a href="#chptr19">Chapter 19</a>
+        <a href="#chptr20">Chapter 20</a>
+        <a href="#chptr21">Chapter 21</a>
+        <a href="#chptr22">Chapter 22</a>
+
+
+    </div>
+
+    <nav class="main-nav">
+
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="javascript:transfer();">Transfer</a></li>
+            <li><a href="#">test</a></li>
+            <li><a href="#">test2</a></li>
+        </ul>
+    </nav>
+
+    </div>
+
+
+  <h3>Eloquent JavaScript</h3>
+  <ol type="I">
+    <h4>Part I - LANGUAGE</h4>
+      <li><a name="chptr01"></a>Chapter 1 - Values, Types and Operators <a href="chapter01/notes.html" target="_blank">[Notes]</a></li>
+      <ol type="A">
+        <li>Values</li>
+        <li>
+          Numbers
+          <ol type="1">
+            <li>Arithmetic</li>
+            <li>Special Numbers</li>
+          </ol>
+        </li>
+        <li>Strings</li>
+        <li>Unary Operators</li>
+        <li>
+          Boolean Values
+          <ol type="1">
+            <li>Comparison</li>
+            <li>Logical Operators</li>
+          </ol>
+        </li>
+        <li>Empty Values</li>
+        <li>
+          Automatic Type Conversion
+          <ol type="1">
+            <li>Short-Circuiting of Logical Operators</li>
+          </ol>
+        </li>
+      </ol>
+      <li><a name="chptr02"></a>Chapter 2 - Program Structure <a href="chapter02/notes.html" target="_blank">[Notes]</a></li>
+      <ol type="A">
+        <li>Expressions and Statements</li>
+        <li>Bindings</li>
+        <li>Binding Names</li>
+        <li>The Environment</li>
+        <li>Functions</li>
+        <li>The console.log Function</li>
+        <li>Return Values</li>
+        <li>Control Flow</li>
+        <li>Conditional Execution</li>
+        <li>while and do Loops</li>
+        <li>Indenting Code</li>
+        <li>for Loops</li>
+        <li>Breaking Out of a Loop</li>
+        <li>Updating Bindings Succinctly</li>
+        <li>Dispatching on a Value with switch</li>
+        <li>Capitalization</li>
+        <li>Comments</li>
+        <li>Summary</li>
+        <li>Exercises
+          <ol type="1">
+            <li><a href="chapter02/triangle.html" target="_blank">Looping a Triangle</a></li>
+            <li><a href="chapter02/fizzbuzz.html" target="_blank">FizzBuzz</a></li>
+            <li><a href="chapter02/chessboard.html" target="_blank">Chessboard</a></li>
+          </ol>
+        </li>
+
+      </ol>
+      <li><a name="chptr03"></a>Chapter 3 - Functions</li>
+      <ol type="A">
+        <li>Defining a Function</li>
+        <li>Bindings and Scopes
+          <ol type="1">
+            <li>Nested Scope</li>
+          </ol>
+        </li>
+        <li>Functions as Values</li>
+        <li>Declaration Notation</li>
+        <li>Arrow Functions</li>
+        <li>The Call Stack</li>
+        <li>Optional Arguments</li>
+        <li>Closure</li>
+        <li>Recursion</li>
+        <li>Growing Functions</li>
+        <li>Functions and Side Effects</li>
+        <li>Summary</li>
+        <li>Exercises
+          <ol type="1">
+            <li><a href="chapter03/minimum.html" target="_blank">Minimum</a></li>
+            <li><a href="chapter03/recursion.html" target="_blank">Recursion</a></li>
+            <li><a href="chapter03/beancounting.html" target="_blank">Bean Counting</a></li>
+          </ol>
+        </li>
+      </ol>
+      <li><a name="chptr04"></a>Chapter 4 - Data Structures: Objects and Arrays</li>
+      <ol type="A">
+        <li>The Weresquirrel</li>
+        <li>Data Sets</li>
+        <li>Properties</li>
+        <li>Methods</li>
+        <li>Objects</li>
+        <li>Mutability</li>
+        <li>The Lycanthrope's Log</li>
+        <li>Computing Correlation</li>
+        <li>Array Loops</li>
+        <li>The Final Analysis</li>
+        <li>Further Arrayology</li>
+        <li>Strings and Their Properties</li>
+        <li>Rest Parameters</li>
+        <li>The Math Object</li>
+        <li>Destructuring</li>
+        <li>JSON</li>
+        <li>Summary</li>
+        <li>Exercises
+          <ol type="1">
+            <li>The Sum of a Range</li>
+            <li>Reversing an Array</li>
+            <li>A List</li>
+            <li>Deep Comparison</li>
+          </ol>
+        </li>
+
+      </ol>
+      <li><a name="chptr05"></a>Chapter 5 - Higher-Order Functions</li>
+      <ol type="A">
+        <li>Abstraction</li>
+        <li>Abstracting Repetition</li>
+        <li>Higher-Order Functions</li>
+        <li>Script Data Set</li>
+        <li>Filtering Arrays</li>
+        <li>Transforming with map</li>
+        <li>Summarizing with reduce</li>
+        <li>Composability</li>
+        <li>Strings and Character Codes</li>
+        <li>Recognizing Text</li>
+        <li>Summary</li>
+        <li>Exercises
+          <ol type="1">
+            <li>Flattening</li>
+            <li>Your Own Loop</li>
+            <li>Everything</li>
+            <li>Dominant Writing Direction</li>
+
+          </ol>
+        </li>
+      </ol>
+      <li><a name="chptr06"></a>Chapter 6 - The Secret Life of Objects</li>
+      <ol type="A">
+        <li>Encapsulation</li>
+        <li>Methods</li>
+        <li>Prototypes</li>
+        <li>Classes</li>
+        <li>Class Notation</li>
+        <li>Overriding Derived Properties</li>
+        <li>Maps</li>
+        <li>Polymorphism</li>
+        <li>Symbols</li>
+        <li>The Iterator Interface</li>
+        <li>Getters, Setters, and Statics</li>
+        <li>Inheritance</li>
+        <li>The instanceof Operator</li>
+        <li>Summary</li>
+        <li>Exercises
+          <ol type="1">
+            <li>A Vector Type</li>
+            <li>Groups</li>
+            <li>Iterable Groups</li>
+            <li>Borrowing a Method</li>
+          </ol>
+        </li>
+      </ol>
+      <li><a name="chptr07"></a>Chapter 7 - Project: A Robot</li>
+      <ol type="A">
+        <li>Meadowfield</li>
+        <li>The Task</li>
+        <li>Persistent Data</li>
+        <li>Simulation</li>
+        <li>The Mail Truck's Route</li>
+        <li>Pathfinding</li>
+        <li>Exercises
+          <ol type="1">
+            <li>Measuring a Robot</li>
+            <li>Robot Efficiency</li>
+            <li>Persistent Group</li>
+          </ol>
+        </li>
+      </ol>
+      <li><a name="chptr08"></a>Chapter 8 - Bugs and Errors</li>
+      <ol type="A">
+        <li>Language</li>
+        <li>Strict Mode</li>
+        <li>Types</li>
+        <li>Testing</li>
+        <li>Debugging</li>
+        <li>Error Propagation</li>
+        <li>Exceptions</li>
+        <li>Cleaning Up After Exceptions</li>
+        <li>Selective Catching</li>
+        <li>Assertions</li>
+        <li>Summary</li>
+        <li>Exercises
+          <ol type="1">
+            <li>Retry</li>
+            <li>The Locked Box</li>
+          </ol>
+        </li>
+      </ol>
+      <li><a name="chptr09"></a>Chapter 9 - Regular Expressions</li>
+      <ol type="A">
+        <li>Creating a Regular Expression</li>
+        <li>Testing for Matches</li>
+        <li>Sets of Characters</li>
+        <li>Repeating Parts of a Patten</li>
+        <li>Grouping Subexpressions</li>
+        <li>Matches and Groups</li>
+        <li>The Date Class</li>
+        <li>Word and String Boundaries</li>
+        <li>Choice Patterns</li>
+        <li>The Mechanics of Matching</li>
+        <li>Backtracking</li>
+        <li>The replace Method</li>
+        <li>Greed</li>
+        <li>Dynamically Creating RegExp Objects</li>
+        <li>The search Method</li>
+        <li>The lastIndex Property
+          <ol type="1">
+            <li>Looping Over Matches</li>
+          </ol>
+        </li>
+        <li>Parsing an INI File</li>
+        <li>International Characters</li>
+        <li>Summary</li>
+        <li>Exercises
+          <ol type="1">
+            <li>Regexp Golf</li>
+            <li>Quoting Style</li>
+            <li>Numbers Again</li>
+          </ol>
+        </li>
+
+      </ol>
+      <li><a name="chptr10"></a>Chapter 10 - Modules</li>
+      <ol type="A">
+        <li>Modules as Building Blocks</li>
+        <li>Packages</li>
+        <li>Improvised Modules</li>
+        <li>Evaluating Data as Code</li>
+        <li>CommonJS</li>
+        <li>ECMAScript Modules</li>
+        <li>Building and Bundling</li>
+        <li>Module Design</li>
+        <li>Summary</li>
+        <li>Exercises
+          <ol type="1">
+            <li>A Modular Robot</li>
+            <li>Roads Module</li>
+            <li>Circular Dependencies</li>
+          </ol>
+        </li>
+      </ol>
+      <li><a name="chptr11"></a>Chapter 11 - Asynchronous Programming</li>
+      <ol type="A">
+        <li>Asynchronicity</li>
+        <li>Crow Tech</li>
+        <li>Callbacks</li>
+        <li>Promises</li>
+        <li>Failure</li>
+        <li>Networks are Hard</li>
+        <li>Collections of Promises</li>
+        <li>Network Flooding</li>
+        <li>Message Routing</li>
+        <li>Async Functions</li>
+        <li>Generators</li>
+        <li>The Event Loop</li>
+        <li>Asynchronous Bugs</li>
+        <li>Summary</li>
+        <li>Exercises
+          <ol type="1">
+            <li>Tracking the Scalpel</li>
+            <li>Building Promise.all</li>
+          </ol>
+        </li>
+
+      </ol>
+      <li><a name="chptr12"></a>Chapter 12 - Project: A Programming Language</li>
+      <ol type="A">
+        <li>Parsing</li>
+        <li>The Evaluator</li>
+        <li>Special Forms</li>
+        <li>The Environment</li>
+        <li>Functions</li>
+        <li>Compilation</li>
+        <li>Cheating</li>
+        <li>Exercises
+          <ol type="1">
+            <li>Arrays</li>
+            <li>Closure</li>
+            <li>Comments</li>
+            <li>Fixing Scope</li>
+          </ol>
+        </li>
+      </ol>
+
+      <h4>Part II - BROWSER</h4>
+        <li><a name="chptr13"></a>Chapter 13 - Javascript and the Browser</li>
+        <ol type="A">
+          <li>Networks and the Internet</li>
+          <li>The Web</li>
+          <li>HTML</li>
+          <li>HTML and JavaScript</li>
+          <li>In the Sandbox</li>
+          <li>Compatibility and the Browser Wars</li>
+        </ol>
+        <li><a name="chptr14"></a>Chapter 14 - The Document Object Model</li>
+        <ol type="A">
+          <li>Document Structure</li>
+          <li>Trees</li>
+          <li>The Standard</li>
+          <li>Moving Through the Tree</li>
+          <li>Finding Elements</li>
+          <li>Changing the Document</li>
+          <li>Creating Nodes</li>
+          <li>Attributes</li>
+          <li>Layout</li>
+          <li>Styling</li>
+          <li>Cascading Styles</li>
+          <li>Query Selectors</li>
+          <li>Positioning and Animating</li>
+          <li>Summary</li>
+          <li>Exercises
+            <ol type="1">
+              <li>Build a Table</li>
+              <li>Elements by Tag Name</li>
+              <li>The Cat's Hat</li>
+            </ol>
+          </li>
+        </ol>
+        <li><a name="chptr15"></a>Chapter 15 - Handling Events</li>
+        <ol type="A">
+          <li>Event Handlers</li>
+          <li>Events and DOM Nodes</li>
+          <li>Event Objects</li>
+          <li>Propagation</li>
+          <li>Default Actions</li>
+          <li>Key Events</li>
+          <li>Pointer Events
+            <ol type="1">
+              <li>Mouse Clicks</li>
+              <li>Mouse Motion</li>
+              <li>Touch Events</li>
+            </ol>
+          </li>
+          <li>Scroll Events</li>
+          <li>Focus Events</li>
+          <li>Load Events</li>
+          <li>Events and the Event Loop</li>
+          <li>Timers</li>
+          <li>Debouncing</li>
+          <li>Summary</li>
+          <li>Exercises
+            <ol type="1">
+              <li>Balloon</li>
+              <li>Mouse Trail</li>
+              <li>Tabs</li>
+            </ol>
+          </li>
+        </ol>
+        <li><a name="chptr16"></a>Chapter 16 - Project: A Platform Game</li>
+        <ol type="A">
+          <li>The Game</li>
+          <li>The Technology</li>
+          <li>Levels</li>
+          <li>Reading a Level</li>
+          <li>Actors</li>
+          <li>Encapsulation as a Burden</li>
+          <li>Drawing</li>
+          <li>Motion and Collision</li>
+          <li>Actor Updates</li>
+          <li>Tracking Keys</li>
+          <li>Running the Game</li>
+          <li>Exercises
+            <ol type="1">
+              <li>Game Over</li>
+              <li>Pausing the Game</li>
+              <li>A Monster</li>
+            </ol>
+          </li>
+        </ol>
+
+        <li><a name="chptr17"></a>Chapter 17 - Drawing on Canvas</li>
+        <ol type="A">
+          <li>SVG</li>
+          <li>The Canvas Element</li>
+          <li>Lines and Surfaces</li>
+          <li>Paths</li>
+          <li>Curves</li>
+          <li>Drawing a Pie Chart</li>
+          <li>Text</li>
+          <li>Images</li>
+          <li>Transformation</li>
+          <li>Storing and Clearing Transformations</li>
+          <li>Back to the Game</li>
+          <li>Choosing a Graphics Interface</li>
+          <li>Summary</li>
+          <li>Exercises
+            <ol type="1">
+              <li>Shapes</li>
+              <li>The Pie Chart</li>
+              <li>A Bouncing Ball</li>
+              <li>Precomputed Mirroring</li>
+            </ol>
+          </li>
+        </ol>
+        <li><a name="chptr18"></a>Chapter 18 - HTTP and Forms</li>
+        <ol type="A">
+          <li>The Protocol</li>
+          <li>Browsers and HTTP</li>
+          <li>Fetch</li>
+          <li>HTTP Sandboxing</li>
+          <li>Appreciating HTTP</li>
+          <li>Security and HTTPS</li>
+          <li>Form Fields</li>
+          <li>Focus</li>
+          <li>Disabled Fields</li>
+          <li>The Form as a Whole</li>
+          <li>Text Fields</li>
+          <li>Checkboxes and Radio Buttons</li>
+          <li>Select Fields</li>
+          <li>File Fields</li>
+          <li>Storing Data Client-Side</li>
+          <li>Summary</li>
+          <li>Exercises
+            <ol type="1">
+              <li>Content Negotiation</li>
+              <li>A JavaScript Workbench</li>
+              <li>Conway's Game of Life</li>
+            </ol>
+          </li>
+        </ol>
+        <li><a name="chptr19"></a>Chapter 19 - Project: A Pixel Art Editor</li>
+        <ol type="A">
+          <li>Components</li>
+          <li>The State</li>
+          <li>DOM Building</li>
+          <li>The Canvas</li>
+          <li>The Application</li>
+          <li>Drawing Tools</li>
+          <li>Saving and Loading</li>
+          <li>Undo History</li>
+          <li>Let's Draw</li>
+          <li>Why Is This So Hard?</li>
+          <li>Exercises
+            <ol type="1">
+              <li>Keyboard Bindings</li>
+              <li>Efficient Drawing</li>
+              <li>Circles</li>
+              <li>Proper Lines</li>
+            </ol>
+          </li>
+        </ol>
+
+        <h4>Part III - NODE</h4>
+          <li><a name="chptr20"></a>Chapter 20 - Node.js</li>
+          <ol type="A">
+            <li>Background</li>
+            <li>The node Command</li>
+            <li>Modules</li>
+            <li>Installng with NPM
+              <ol type="1">
+                <li>Package Files</li>
+                <li>Versions</li>
+              </ol>
+            </li>
+            <li>The File System Module</li>
+            <li>The HTTP Module</li>
+            <li>Streams</li>
+            <li>A File Server</li>
+            <li>Summary</li>
+            <li>Exercises
+              <ol type="1">
+                <li>Search Tool</li>
+                <li>Directory Creation</li>
+                <li>A Public Space on the Web</li>
+              </ol>
+            </li>
+          </ol>
+          <li><a name="chptr21"></a>Chapter 21 - Project: Skill-Sharing Website</li>
+          <ol type="A">
+            <li>Design</li>
+            <li>Long Polling</li>
+            <li>HTTP Interface</li>
+            <li>The Server
+              <ol type="1">
+                <li>Routing</li>
+                <li>Serving Files</li>
+                <li>Talks as Resources</li>
+                <li>Long Polling Support</li>
+              </ol>
+            </li>
+            <li>The Client
+              <ol type="1">
+                <li>HTML</li>
+                <li>Actions</li>
+                <li>Rendering Components</li>
+                <li>Polling</li>
+                <li>The Application</li>
+              </ol>
+            </li>
+            <li>Exercises
+              <ol type="1">
+                <li>Disk Persistence</li>
+                <li>Coment Field Resets</li>
+              </ol>
+            </li>
+          </ol>
+          <li><a name="chptr22"></a>Chapter 22 - JavaScript and Performance</li>
+          <ol type="A">
+            <li>Staged Compilation</li>
+            <li>Graph Layout</li>
+            <li>Defining a Graph</li>
+            <li>Force-Directed Layout</li>
+            <li>Avoiding Work</li>
+            <li>Profiling</li>
+            <li>Function Inlining</li>
+            <li>Creating Less Garbage</li>
+            <li>Garbage Collection</li>
+            <li>Dynamic Types</li>
+            <li>Summary</li>
+            <li>Exercises
+              <ol type="1">
+                <li>Pathfinding</li>
+                <li>Timing</li>
+                <li>Optimizing</li>
+              </ol>
+            </li>
+          </ol>
+
+
+  </ol>
+
+</div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="/scripts/jquery.js"></script>
+  <script src="/scripts/popper.js"></script>
+  <script src="/scripts/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

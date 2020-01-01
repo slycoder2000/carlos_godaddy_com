@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<body>
+<h1>Recursion</h1>
+<p>Without using modulo, create a function isEven that will return true or false.
+    Given a positive whole number and the following info:<br>
+    <ul>
+        <li>Zero is even</li>
+        <li>One is odd</li>
+        <li>For any other number N, its evenness is the same as N-2</li>
+
+    </ul>
+
+
+</p>
+
+<script>
+const isEven = param => {
+    // Get absolute value if less than 0
+    if(param<0) param=-param;
+    //console.log(param);
+    if(param==0) {
+        return true;
+    } else if(param==1) {
+        return false
+    } else {
+        return isEven(param-2);
+    }
+}
+console.log(isEven(0));
+console.log(isEven(1));
+console.log(isEven(50));
+console.log(isEven(75));
+console.log(isEven(-1));
+console.log(isEven(-10));
+
+
+
+
+</script>
+
+
+    </body>
+</html>
