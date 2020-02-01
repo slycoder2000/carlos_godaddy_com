@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="app.css" />
     <title>Vehicle</title>
-
+    <script src="/scripts/vue.js"></script>
     <style>
-#driver-nav {
-	display: grid;
-	grid-gap: 10px;
-	padding: 0;
-	list-style: none;
-	grid-template-columns: repeat(4, 1fr);
-}
+    #driver-nav {
+        display: grid;
+        grid-gap: 10px;
+        padding: 0;
+        list-style: none;
+        grid-template-columns: repeat(4, 1fr);
+    }
 
 
 
     @media screen and (max-width: 750px) {
         input {
-            font-size:4vw;
+            font-size: 4vw;
         }
     }
     </style>
 </head>
+
 <body>
 
-<!--Nav-->
-<div id="wrapper" class="small-container">
+    <!--Nav-->
+    <div id="wrapper" class="small-container">
 
-<div id="driver-nav">
-<?php require_once('tabs.php'); ?>
+        <div id="driver-nav">
+            <?php require_once('tabs.php'); ?>
 
-</div>
-<h1>Vehicle Info</h1>
+        </div>
+        <h1>Vehicle Info</h1>
+
+
+        <!-- More will go here -->
+
+        <form class="spreadsheet">
+
+
+            <label>Desc1</label> <input type="text"><br>
+            <label>Desc2</label> <input type="text"><br>
+            <label>Desc3</label> <input type="text"><br>
+        </form>
+
+        <script src="js/vehicle.js"></script>
 </body>
+
 </html>

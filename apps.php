@@ -52,7 +52,24 @@
                         total, for goal or notation purposes.<br /><br />
 
                     </li>
+                    <li>
 
+                        <a href="apps/driver/index.php">Driver Tools</a> - Tools used for driving for Uber, Lyft or
+                        Food
+                        Delivery.
+                        <ul>
+                            <li>
+                                Calculator - This is a simple program that adds 14 items together and stores them in the
+                                browser
+                                cache with localstorage. The checkbox to the left is used for transferring values, and
+                                the checkbox
+                                on the right gives you the option to add or omit line items from the total for goal or
+                                notation
+                                purposes.
+                            </li>
+                        </ul>
+                        <br /><br />
+                    </li>
                     <li>
 
                         <a href="apps/foodbank/index.php" target="_new">FoodBank Listings</a> - This is a listing of
@@ -87,10 +104,11 @@
                         A work in progress.<br /><br />
 
                     </li>
-                    
+
                     <li>
 
-                        <a href="apps/arithmetic/index.html" target="_new">Arithmetic</a> - Math program gives you 10 math problems.<br /><br />
+                        <a href="apps/arithmetic/index.html" target="_new">Arithmetic</a> - Math program gives you 10
+                        math problems.<br /><br />
 
                     </li>
                 </ul>
