@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script src="04_data.js"></script>
+		<script src="journal.js"></script>
+		<script>
+			console.log(journalEvents(JOURNAL));
+
+			for (let event of journalEvents(JOURNAL)) {
+				console.log(event + ':', phi(tableFor(event, JOURNAL)));
+			}
+
+			for (let entry of JOURNAL) {
+				if (entry.events.includes('peanuts') && !entry.events.includes('brushed teeth')) {
+					entry.events.push('peanut teeth');
+				}
+			}
+			console.log(phi(tableFor('peanut teeth', JOURNAL)));
+		</script>
+	</body>
+</html>

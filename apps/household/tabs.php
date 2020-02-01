@@ -1,4 +1,4 @@
-<button id="calculator" type="button" class="btn btn-primary" onclick="location.href='calculator.php'" >Calc</button>
-<button id="count" type="button" class="btn btn-primary" onclick="location.href='count.php'">Count</button>
-<button id="vehicle" type="button" class="btn btn-primary" onclick="location.href='vehicle.php'">Vehicle</button>
+<button id="income" type="button" class="btn btn-primary" onclick="location.href='income.php'">Income</button>
+<button id="rent" type="button" class="btn btn-primary" onclick="location.href='rent.php'">Rent</button>
+<button id="budget" type="button" class="btn btn-primary" onclick="location.href='budget.php'">Budget</button>
 <button id="goals" type="button" class="btn btn-primary" onclick="location.href='goals.php'">Goals</button>
