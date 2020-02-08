@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('webapp-alpha', require('./components/webAppAlpha.vue').default);
+Vue.component('webapp-foodbank', require('./components/webAppFoodbank.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

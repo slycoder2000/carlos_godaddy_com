@@ -25,6 +25,8 @@ Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/webapps', 'PagesController@webapps');
 Route::get('/webapps/alpha', 'PagesController@alpha');
+Route::get('/webapps/foodbank', 'PagesController@foodbank');
+Route::get('/webapps/showfoodbank', 'FoodBanksController@getFoodBanks');
 
 
 Route::get('/resources', 'PagesController@resources');

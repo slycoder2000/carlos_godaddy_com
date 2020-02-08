@@ -44,7 +44,7 @@
             </li>
             <li>
 
-                <a href="apps/foodbank/index.php" target="_new">FoodBank Listings</a> - This is a listing of
+                <a href="/webapps/foodbank" target="_new">FoodBank Listings</a> - This is a listing of
                 foodbanks in the
                 Denver
 

@@ -31,6 +31,8 @@ class PagesController extends Controller
         return view('pages.contact')->with('title', $title);
     }
 
+
+
     public function webapps() {
         $title = 'Web Apps';
         return view('pages.webapps')->with('title', $title);
@@ -40,6 +42,12 @@ class PagesController extends Controller
         $title = 'Phonetic Alphabet';
         return view('pages.webapps.alpha')->with('title', $title);
     }
+
+    public function foodbank() {
+        $title = 'Food Banks';
+        return view('pages.webapps.foodbank')->with('title', $title);
+    }
+
 
     public function resources() {
         $title = 'Resources';

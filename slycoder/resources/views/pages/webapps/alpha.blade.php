@@ -8,7 +8,7 @@
     <article class="block1">
         <h1>{{$title}}</h1>
     </article>
-    <div id="app">
+    <div id="app2">
         <webapp-alpha />
     </div>
 </section>
