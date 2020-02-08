@@ -2,12 +2,12 @@
 
 @section('content')
 
-<section class="set1">
-    <article class="block1">
+<section class="set1 card">
+    <article class="block1 card-header">
         <h1>{{$title}}</h1>
     </article>
 
-    <article class="block2">
+    <article class="block2 card-body">
         <p>I work with a number of people to help promote their businesses and personal sites with 24+ years
             experience in computer programming, web development and pc repair.</p>
 

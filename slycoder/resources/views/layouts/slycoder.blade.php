@@ -8,7 +8,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <script src="https://use.fontawesome.com/4520980e05.js"></script>
 
     <!-- CSRF Token -->

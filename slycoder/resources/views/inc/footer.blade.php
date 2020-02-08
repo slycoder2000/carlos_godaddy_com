@@ -11,7 +11,7 @@
 		            onClick="javascript:document.documentElement.scrollTop=0;">
 		    </div>
 
-		    <div class="ftrItem1">&copy;&nbsp;2016&nbsp;Slycoder.com </div>
+		    <div class="ftrItem1">&copy;&nbsp;2000 - &copy;&nbsp;{{ now()->year }}&nbsp;Slycoder.com </div>
 		    <div class="ftrItem2">Westminster,&nbsp;Co.&nbsp;80601</div>
 		    <div class="ftrItem3">cell:&nbsp;<a href="tel:720-364-8011">(720)&nbsp;364&#8209;8011</a></div>
 		    <div class="ftrItem4"> e&#8209;mail:&nbsp;<a href='mailto:sly@slycoder.com'>Sly@SlyCoder.com</a></div>

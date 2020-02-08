@@ -37444,7 +37444,7 @@ var render = function() {
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _vm._v("\n\t\t\t\t\tEnter Text\n\t\t\t\t\t"),
-            _c("form", [
+            _c("form", { staticClass: "container-fluid" }, [
               _c("input", {
                 directives: [
                   {
@@ -37454,7 +37454,7 @@ var render = function() {
                     expression: "alphaText"
                   }
                 ],
-                staticStyle: { width: "20em" },
+                staticClass: "container-fluid",
                 attrs: { type: "text", name: "alphaText" },
                 domProps: { value: _vm.alphaText },
                 on: {

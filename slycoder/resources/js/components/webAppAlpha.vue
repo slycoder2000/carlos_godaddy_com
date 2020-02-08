@@ -5,11 +5,11 @@
 				<div class="card">
 					<div class="card-header">
 						Enter Text
-						<form>
+						<form class="container-fluid">
 							<input
 								type="text"
+								class="container-fluid"
 								name="alphaText"
-								style="width:20em;"
 								v-model="alphaText"
 								v-on:keyup="phoneticize()"
 							/>

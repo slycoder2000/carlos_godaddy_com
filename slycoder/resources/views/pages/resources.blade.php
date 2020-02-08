@@ -1,12 +1,12 @@
 @extends('layouts.slycoder')
 
 @section('content')
-<section class="set1">
-    <article class="block1">
+<section class="set1 card">
+    <article class="block1 card-header">
         <h1>{{$title}}</h1>
     </article>
 
-    <article class="block2">
+    <article class="block2 card-body">
         <ul>
             <li><a href="http://wp.slycoder.com" target="_blank">Slycoder Development Notes</a> - My notebook of
                 ideas and discoveries.</li>
