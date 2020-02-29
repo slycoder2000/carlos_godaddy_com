@@ -14,33 +14,56 @@
         @php
         date_default_timezone_set("America/Denver");
         //echo date_default_timezone_get();
+        $now = time();
+        //$Override = mktime(0, 0, 0, date("m", $now)  , 26, date("Y", $now));
+        //$today = getdate($Override);
         $today = getdate();
         //print_r($today);
 
         $fbStatus = "*** CLOSED ***";
 
+        function getNumber($today) {
+            $getNum = 0;
+            //Count from 1 to today's number 
+            // if dow = dow then add 1
+            //first day of month
+            $now = time();
+    
+            for($icount=1; $icount<=$today['mday']; $icount++) {
+                $FirstDayOfMonth = mktime(0, 0, 0, date("m", $now)  , $icount, date("Y", $now));  
+                $runningDate=getdate($FirstDayOfMonth);
+                if($runningDate['weekday']==$today['weekday'])  $getNum++; 
+                //echo($runningDate['weekday']);
+    
+            }
+
+            //echo($getNum);
+
+            return $getNum;
+        }
+
+
         function checkStatus($today, $fbStatus, $calcDay, $calcDayNum) {
-        if ($fbStatus == "*** OPEN ***") return "*** OPEN ***";
-        if ($calcDay !== 'undefined' && $calcDayNum !== 'undefined') {
-
-        if ($calcDay == $today && ($calcDayNum == "0" || $calcDayNum == 1)) {
-        return "*** OPEN ***";
+            if ($fbStatus == "*** OPEN ***") return "*** OPEN ***";
+            if ($calcDay !== '' && $calcDayNum !== '') {
+                if ($calcDay == $today['weekday'] && ($calcDayNum == "0" || $calcDayNum == getNumber($today))) {
+                return "*** OPEN ***";
+                }
+            }
+            return "*** Closed ***";
         }
-
-        }
-        return "*** Closed ***";
-
-        }
-
 
         function checkAllStatus($today,$fb) {
-        $fbStatus = "*** CLOSED ***";
+            $fbStatus = "*** CLOSED ***";
 
-        for($icount = 1; $icount<=7; $icount++) {
-             $fbStatus=checkStatus($today['weekday'], $fbStatus, $fb['calcDay'.$icount], $fb['calcDayNum'.$icount]); 
+            for($icount = 1; $icount<=7; $icount++) {
+                $fbStatus=checkStatus($today, $fbStatus, $fb['calcDay'.$icount], $fb['calcDayNum'.$icount]); 
+            } 
+            return $fbStatus; 
         } 
-        return $fbStatus; 
-        } 
+
+
+
         //echo($today['weekday']); 
         @endphp
         @foreach($fbcs as $fbc) 
@@ -60,31 +83,31 @@
 
                         @foreach($fbs as $fb)
                         @if($fb['cityref']==$fbc['city'])
-                        <div class='card' style='min-width: 12rem' ;>
+                        <div class='card' style='min-width: 12rem' >
                             <div class='card-body'>
                                 <h5 class='card-title'>{{$fb -> name}}</h5><br>
                                 {{$fb -> phone}}<br>
                                 @php
                                 echo("<a href='https://www.google.com/maps/place/");
-                                    echo(urlencode($fb -> address));
-                                    
-                                    echo("' target='_new'>");
-                                    $fbStatus= checkAllStatus($today, $fb);
-                                    @endphp {{$fb -> address}}
-                                    @if(isset($fb -> address2))</br>{{$fb -> address2}}
-                                    @endif </a></br>
+        
+                                echo(urlencode($fb -> address));
+                                
+                                echo("' target='_new'>");
+                                $fbStatus= checkAllStatus($today, $fb);
+                                @endphp {{$fb -> address}}
+                                @if(isset($fb -> address2))</br>{{$fb -> address2}}
+                                @endif </a></br>
 
                                 {{$fb -> days}}<br>
                                 {{$fb -> starttime}} - {{$fb -> endtime}}<br>
 
                                 @if($fbStatus=='*** OPEN ***')
-                                <span class='alert-success'>
-                                    @else
+                                    <span class='alert-success'>
+                                @else
                                     <span class='text-danger'>
-                                        @endif
-                                        {{$fbStatus}}</span>
-
-
+                                @endif
+        
+                                {{$fbStatus}}</span>
 
                             </div>
                         </div>
