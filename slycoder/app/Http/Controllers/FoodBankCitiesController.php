@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\FoodBank;
 use App\FoodBankCity;
 
-
-class FoodBanksController extends Controller
+class FoodBankCitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +15,13 @@ class FoodBanksController extends Controller
     public function index()
     {
         //
-        $fbs = FoodBank::all();
-        $fbcs = FoodBankCity::all();
-      
-        //dd($cities);
-
-            return view('pages.webapps.showfoodbanks',['fbs' => $fbs,'fbcs'=>$fbcs]);
-         
         
+        
+        $cities = FoodBankCity::all();
+        // dd($data);
+
+        return view('pages.webapps.showfoodbankcities',['cities' => $cities]);
+
     }
 
     /**
@@ -35,13 +32,6 @@ class FoodBanksController extends Controller
     public function create()
     {
         //
-        //
-        $fbs = FoodBank::all();
-        //dd($cities);
-
-            return view('pages.webapps.addfoodbank',['fbs' => $fbs]);
-        
-        
     }
 
     /**
@@ -53,26 +43,18 @@ class FoodBanksController extends Controller
     public function store(Request $request)
     {
         //
-                
         $data = request() -> validate([
-            'name' => 'required|min:2'
+            'city' => 'required|min:2'
         ]);
 
-        $fb  = new FoodBank();
-        $fb->name = request('name');
-        $fb->phone = request('phone');
-        $fb->address = request('address');
-        $fb->address2 = request('address2');
-        $fb->days = request('days');
-        $fb->starttime = request('starttime');
-        $fb->endtime = request('endtime');
-        $fb->notes = request('notes');
-        $fb->notes2 = request('notes2');
-        $fb->save();
+
+
+        $city  = new FoodBankCity();
+        $city->city = request('city');
+        $city->save();
 
         return back();
-        //dd($fb );
-
+        //dd(request('city'));
     }
 
     /**

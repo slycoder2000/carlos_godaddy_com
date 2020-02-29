@@ -48,7 +48,6 @@ class PagesController extends Controller
         return view('pages.webapps.foodbank')->with('title', $title);
     }
 
-
     public function resources() {
         $title = 'Resources';
         return view('pages.resources')->with('title', $title);
