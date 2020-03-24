@@ -31,7 +31,7 @@
 <body>
     <div id="app">
         <div id="wrapper">
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm animated slideInDown slow">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
@@ -99,7 +99,9 @@
             </main>
             <!-- FOOTER -->
             <!-- <php include('scripts/univ_footer.php'); > -->
+            <div data-aos="fadeInUp">
             @include('inc.footer')
+            </div>
         </div>
     </div>
 
