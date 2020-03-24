@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="app.css" />
+    <!-- <link rel="stylesheet" href="/scripts/bootstrap/css/bootstrap.min.css">  -->
     <title>Calculator</title>
 
     <script src="/scripts/vue.js"></script>
@@ -89,15 +90,15 @@
 
         <form class="spreadsheet">
 
-            <div v-for="lineitem in lineitems" class="lineitem">
+            <div v-for="lineitem in lineitems" :key="lineitem.id" class="lineitem">
                 <input type="checkbox" v-model="lineitem.pos" @change="saveRow()">
                 <!--@change="transfer(lineitem.pos)" -->
                 <input type="text" v-model="lineitem.desc" style="width:10em" placeholder="desc" @change="saveRow()"
                     @keyup="saveRow()">
                 <input type=" text" v-model="lineitem.amount" style="width: 4em" placeholder="amount"
                     @change="calcTotalAmount()" @keyup="calcTotalAmount()">
-                <input type="checkbox" v-model="lineitem.calc" @change="calcTotalAmount()" @mouseup="calcTotalAmount()">
-                <!-- {{lineitem.calc}} -->
+                <input type="checkbox" name="acs" :checked="lineitem.calc" @input="freshenCheckbox(lineitem.id, lineitem.calc)">
+                 {{lineitem.calc}} 
             </div>
 
             <div style="border:2px solid #000; width:300px; background-color:#fff; color:#000; text-align:center;">

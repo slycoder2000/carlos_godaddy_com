@@ -7,7 +7,18 @@ function isEmpty(obj) {
 	return true;
 }
 
-new Vue({
+let syncAllCheckBoxes = () => {
+	var items = document.getElementsByName('acs');
+	var selectedItems = '';
+	for (var i = 0; i < items.length; i++) {
+		//if (items[i].type == 'checkbox' && items[i].checked == true)
+		if (items[i].checked != app.lineitems[i].calc) app.lineitems[i].calc = items[i].checked;
+		//selectedItems += items[i].checked + ' ' + app.lineitems[i].calc + '\n';
+	}
+	//alert(selectedItems);
+};
+
+var app = new Vue({
 	el: '#wrapper',
 	data() {
 		return {
@@ -34,8 +45,15 @@ new Vue({
 		this.calcTotalAmount();
 	},
 	methods: {
+		freshenCheckbox: function(id, chkBoxVal) {
+			this.lineitems[id].calc = !chkBoxVal;
+			//alert(id + '  ' + chkBoxVal);
+			syncAllCheckBoxes();
+			this.calcTotalAmount();
+		},
 		saveRow() {
 			localStorage.setItem(STORAGE_KEY, JSON.stringify(this.lineitems));
+			//this.freshenCheckbox();
 		},
 		addRow(cntr) {
 			this.lineitems.push({ desc: '', id: cntr, amount: '', pos: false, calc: true });
@@ -53,24 +71,16 @@ new Vue({
 			}[op];
 			return Math.round(n * 100) / 100;
 		},
-		calcTotalAmount: function() {
+
+		calcTotalAmount() {
 			this.totalAmount = 0;
 			let ttlAmount = 0;
-			// this.lineitems.forEach(lineitem => {
-			// 	ttlAmount = 0;
-			// 	ttlAmount = this.fpArithmetic('+', parseFloat(this.totalAmount), parseFloat(lineitem.amount));
-			// 	//console.log(lineitem.amount + '+' + ttlAmount);
-			// 	if (!isNaN(ttlAmount)) {
-			// 		if (lineitem.calc == true) this.totalAmount = ttlAmount;
-			// 		//console.log(this.totalAmount + ' ' + lineitem.amount + ' ' + ttlAmount + ' ' + lineitem.calc);
-			// 	}
-			// });
 
 			filteredItems = this.lineitems.filter(item => {
 				return item.calc == true && item.amount != '';
 			});
 
-			console.log(filteredItems);
+			//console.log(filteredItems);
 
 			ttlAmount = filteredItems.reduce((currentTotal, item) => {
 				return this.fpArithmetic('+', parseFloat(item.amount), parseFloat(currentTotal));
@@ -82,6 +92,7 @@ new Vue({
 			//console.log(this.totalAmount);
 			localStorage.setItem(STORAGE_KEY, JSON.stringify(this.lineitems));
 		},
+
 		transfer: function(checkedItem) {
 			// transferring from one line item to the next requires
 			// memorizing where to copy the value from and to
@@ -173,5 +184,6 @@ new Vue({
 			closeSideMenu();
 		}
 	},
+	watch: {},
 	computed: {}
 });
