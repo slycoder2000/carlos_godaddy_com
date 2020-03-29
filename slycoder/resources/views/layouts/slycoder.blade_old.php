@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <script src="https://use.fontawesome.com/4520980e05.js"></script>
+    <!-- <script src="https://use.fontawesome.com/4520980e05.js"></script> -->
 
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">

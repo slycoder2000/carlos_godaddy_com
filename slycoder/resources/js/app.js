@@ -8,8 +8,8 @@ require('./bootstrap');
 
 import 'bootstrap';
 
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+//import AOS from 'aos';
+//import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 window.Vue = require('vue');
 
@@ -56,4 +56,4 @@ const app = new Vue({
 	el: '#app'
 });
 
-AOS.init();
+//AOS.init();
