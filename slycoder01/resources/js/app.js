@@ -20,6 +20,12 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('welcome-component', require('./components/WelcomeComponent.vue').default);
+Vue.component('services-component', require('./components/ServicesComponent.vue').default);
+Vue.component('footer-component', require('./components/FooterComponent.vue').default);
+
+Vue.component('alpha-component', require('./components/WebApps/AlphaComponent.vue').default);
+Vue.component('foodbank-component', require('./components/WebApps/FoodbankComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,5 +34,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app',
+	el: '#app'
 });
