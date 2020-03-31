@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Users;
 use Illuminate\Http\Request;
-use App\FoodBank;
-use App\FoodBankCity;
 
-
-class FoodBanksController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +15,12 @@ class FoodBanksController extends Controller
     public function index()
     {
         //
-        $fbs = FoodBank::all();
-        $fbcs = FoodBankCity::all();
-      
-        //dd($cities);
-
-            return view('webapps.foodbank.showfoodbanks',['fbs' => $fbs,'fbcs'=>$fbcs]);
-         
-        
+        //
+        $data=[
+            'title' => 'Display Users',
+            'users' => Users::all()
+            ];
+            return view('auth.displayusers')->with($data);
     }
 
     /**
@@ -35,13 +31,6 @@ class FoodBanksController extends Controller
     public function create()
     {
         //
-        //
-        $fbs = FoodBank::orderBy('cityref', 'ASC')->orderBy('name', 'ASC') ->paginate(10);
-        //dd($cities);
-
-            return view('webapps.foodbank.addfoodbank',['fbs' => $fbs]);
-        
-        
     }
 
     /**
@@ -53,26 +42,6 @@ class FoodBanksController extends Controller
     public function store(Request $request)
     {
         //
-                
-        $data = request() -> validate([
-            'name' => 'required|min:2'
-        ]);
-
-        $fb  = new FoodBank();
-        $fb->name = request('name');
-        $fb->phone = request('phone');
-        $fb->address = request('address');
-        $fb->address2 = request('address2');
-        $fb->days = request('days');
-        $fb->starttime = request('starttime');
-        $fb->endtime = request('endtime');
-        $fb->notes = request('notes');
-        $fb->notes2 = request('notes2');
-        $fb->save();
-
-        return back();
-        //dd($fb );
-
     }
 
     /**
@@ -84,7 +53,7 @@ class FoodBanksController extends Controller
     public function show($id)
     {
         //
-        return foodbank::find($id);
+
     }
 
     /**

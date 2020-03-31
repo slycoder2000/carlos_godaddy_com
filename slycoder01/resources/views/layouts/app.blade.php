@@ -63,6 +63,14 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                            @if(Auth::user()->hasRole('SLY_ADMIN'))
+                            <a class="dropdown-item" href="/admin">- Admin</a>
+                            @endif
+                            @if(Auth::user()->hasRole('SLY_SUPERADMIN'))
+                            <a class="dropdown-item" href="/superadmin">- Super Admin</a>
+                            @endif
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">

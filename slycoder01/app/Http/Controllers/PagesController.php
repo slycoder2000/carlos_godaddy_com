@@ -51,6 +51,9 @@ class PagesController extends Controller
         return view('webapps.foodbank.foodbank')->with('title', $title);
     }
 
-
+    public function displayusers() {
+        $title = 'Display Users';
+        return view('displayusers')->with('title', $title);
+    }
 
 }

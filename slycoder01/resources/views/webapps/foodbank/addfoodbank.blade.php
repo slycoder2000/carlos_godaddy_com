@@ -55,11 +55,14 @@
 
 
         @if(count($fbs)>0)
+      
+        
         <ul>
-            @foreach($fbs as $fb)
-            <li>{{$fb -> name}}</li>
-            @endforeach
+        @foreach($fbs as $fb)
+            <li><a href='/webapps/foodbank/show/{{$fb->id}}'>{{$fb->cityref}} - {{$fb -> name}}</a></li>
+        @endforeach
         </ul>
+       {{$fbs->links()}}
         @endif
     </div>
 </section>

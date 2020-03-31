@@ -15,16 +15,20 @@
                     @endif
 
 
-                    <div>Logged in</div>
+                    <h4>All Users</h4>
+                    <ul>
+                        <li><a href="/displayusers">Show Users</a></li>
+                    </ul>
+                    <br/>
 
-                    @if(Auth::user()->hasRole('SLY_ADMIN'))
+                    <h3>WebApps Admin</h3>
+                    <h4>Foodbanks</h4>
+                    <ul>
+                        <li><a href="/webapps/foodbank/showcities">Show/Add Cities</a></li>
+                        <li><a href="/webapps/foodbank/addfoodbank">Show/Add/Edit FoodBanks</a></li>
+                    </ul>
 
-                    <div>Admin Logged in</div>
-                    @endif
-                    @if(Auth::user()->hasRole('SLY_SUPERADMIN'))
 
-                    <div>Super Admin Logged in</div>
-                    @endif
                 </div>
             </div>
         </div>
