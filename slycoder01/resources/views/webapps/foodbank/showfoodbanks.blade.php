@@ -77,13 +77,13 @@
                             aria-expanded='true' aria-controls='collapse{{$fbc_nospace}}'>
                             {{$fbc -> city}}</button></h2>
                     <div id='collapse{{$fbc_nospace}}' class='card-deck collapse hide' aria-labelledby='headingOne'
-                        data-parent='#{{$fbc_nospace}}' style='padding-bottom:40px;'>
+                        data-parent='#{{$fbc_nospace}}'>
 
                         @if(count($fbs)>0)
 
                         @foreach($fbs as $fb)
                         @if($fb['cityref']==$fbc['city'])
-                        <div class='card' style='min-width: 12rem' >
+                        <div class='card' style='min-width:12rem; margin-bottom:40px;' >
                             <div class='card-body'>
                                 <h5 class='card-title'>{{$fb -> name}}</h5><br>
                                 {{$fb -> phone}}<br>

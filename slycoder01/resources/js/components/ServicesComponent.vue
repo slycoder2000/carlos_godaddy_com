@@ -1,9 +1,11 @@
 <template>
-	<div class="col-md-6" id="ServicesBlock">
-		Services
-		<ul v-if="services.length">
-			<li v-for="service in services">{{ service }}</li>
-		</ul>
+	<div class="col-md-6 d-md-flex ml-md-3">
+		<div class="flex-fill mr-md-n3" id="ServicesBlock">
+			Services
+			<ul v-if="services.length">
+				<li v-for="service in services">{{ service }}</li>
+			</ul>
+		</div>
 	</div>
 </template>
 

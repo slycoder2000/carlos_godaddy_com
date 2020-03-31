@@ -1,9 +1,11 @@
 <template>
-	<div class="col-md-6" id="WelcomeBanner">
-		<h1 class="animated flipInX delay-1s">
-			Welcome to <br />
-			Slycoder.com
-		</h1>
+	<div class="col-md-6 d-md-flex ml-md-n3">
+		<div class="flex-fill mr-md-n3" id="WelcomeBanner">
+			<h1 class="animated flipInX delay-1s">
+				Welcome to <br />
+				Slycoder.com
+			</h1>
+		</div>
 	</div>
 </template>
 

@@ -1997,6 +1997,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data'],
   // accepts data for replies
@@ -2202,6 +2204,8 @@ function isEmpty(obj) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -38463,22 +38467,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "col-md-6", attrs: { id: "ServicesBlock" } },
-    [
-      _vm._v("\n\tServices\n\t"),
-      _vm.services.length
-        ? _c(
-            "ul",
-            _vm._l(_vm.services, function(service) {
-              return _c("li", [_vm._v(_vm._s(service))])
-            }),
-            0
-          )
-        : _vm._e()
-    ]
-  )
+  return _c("div", { staticClass: "col-md-6 d-md-flex ml-md-3" }, [
+    _c(
+      "div",
+      { staticClass: "flex-fill mr-md-n3", attrs: { id: "ServicesBlock" } },
+      [
+        _vm._v("\n\t\tServices\n\t\t"),
+        _vm.services.length
+          ? _c(
+              "ul",
+              _vm._l(_vm.services, function(service) {
+                return _c("li", [_vm._v(_vm._s(service))])
+              }),
+              0
+            )
+          : _vm._e()
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38669,17 +38675,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-md-6", attrs: { id: "WelcomeBanner" } },
-      [
-        _c("h1", { staticClass: "animated flipInX delay-1s" }, [
-          _vm._v("\n\t\tWelcome to "),
-          _c("br"),
-          _vm._v("\n\t\tSlycoder.com\n\t")
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "col-md-6 d-md-flex ml-md-n3" }, [
+      _c(
+        "div",
+        { staticClass: "flex-fill mr-md-n3", attrs: { id: "WelcomeBanner" } },
+        [
+          _c("h1", { staticClass: "animated flipInX delay-1s" }, [
+            _vm._v("\n\t\t\tWelcome to "),
+            _c("br"),
+            _vm._v("\n\t\t\tSlycoder.com\n\t\t")
+          ])
+        ]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -51006,15 +51014,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************!*\
   !*** ./resources/js/components/FooterComponent.vue ***!
   \*****************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FooterComponent_vue_vue_type_template_id_abfbddf2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FooterComponent.vue?vue&type=template&id=abfbddf2& */ "./resources/js/components/FooterComponent.vue?vue&type=template&id=abfbddf2&");
 /* harmony import */ var _FooterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FooterComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/FooterComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _FooterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _FooterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _FooterComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FooterComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/FooterComponent.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FooterComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FooterComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/FooterComponent.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -51046,7 +51053,7 @@ component.options.__file = "resources/js/components/FooterComponent.vue"
 /*!******************************************************************************!*\
   !*** ./resources/js/components/FooterComponent.vue?vue&type=script&lang=js& ***!
   \******************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
