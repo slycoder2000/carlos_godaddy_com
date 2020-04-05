@@ -35,7 +35,22 @@ Route::get('/webapps/foodbank', 'FoodBanksController@index');
         Route::group(['middleware' => 'role:SLY_ADMIN'], function(){
 
             Route::get('/admin', 'AdminController@index')->name('admin');
-    
+
+
+            Route::get('/displayusers', 'UsersController@index');
+
+            Route::get('/webapps/foodbank/showcities', 'FoodBankCitiesController@index');
+            Route::post('/webapps/foodbank/addcity', 'FoodBankCitiesController@store');
+            Route::get('/webapps/foodbank/showAdminList', 'FoodBanksController@showAdminList');
+
+            Route::get('/webapps/foodbank/addfoodbank', 'FoodBanksController@create');
+            Route::post('/webapps/foodbank/savefoodbank', 'FoodBanksController@store');
+
+            Route::get('/webapps/foodbank/show/{id}', 'FoodBanksController@show');
+            Route::get('/webapps/foodbank/edit/{id}', 'FoodBanksController@edit');
+            Route::get('/webapps/foodbank/updatefoodbank/{id}', 'FoodBanksController@update');
+            
+
         });
 
         Route::group(['middleware' => 'role:SLY_SUPERADMIN'], function(){
@@ -44,13 +59,7 @@ Route::get('/webapps/foodbank', 'FoodBanksController@index');
     
         });
 
-        Route::get('/displayusers', 'UsersController@index');
 
-        Route::get('/webapps/foodbank/showcities', 'FoodBankCitiesController@index');
-        Route::post('/webapps/foodbank/addcity', 'FoodBankCitiesController@store');
-        Route::get('/webapps/foodbank/show/{id}', 'FoodBanksController@show');
-        Route::get('/webapps/foodbank/addfoodbank', 'FoodBanksController@create');
-        Route::post('/webapps/foodbank/saveaddition', 'FoodBanksController@store');
     });
 //});
 

@@ -25,7 +25,7 @@
                     <h4>Foodbanks</h4>
                     <ul>
                         <li><a href="/webapps/foodbank/showcities">Show/Add Cities</a></li>
-                        <li><a href="/webapps/foodbank/addfoodbank">Show/Add/Edit FoodBanks</a></li>
+                        <li><a href="/webapps/foodbank/showAdminList">Show/Add/Edit FoodBanks</a></li>
                     </ul>
 
 
