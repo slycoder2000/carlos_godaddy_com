@@ -15,7 +15,7 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <!-- <script src="{ { asset('js/app.js') } " defer></script> -->
+    <!-- <script src="{ { asset('js/app.js') } }" defer></script> -->
 
     <!-- Fonts -->
     <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> -->
@@ -29,21 +29,35 @@
     <div id="app" class="container-fluid">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
          
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
+        <a href="/webapps/drivertools" class="btn btn-sm btn-light active" role="button" aria-pressed="true">Calculator</a> &nbsp;
+        <a href="/webapps/drivertools/count" class="btn btn-sm btn-light active" role="button" aria-pressed="true">Count</a> &nbsp;
+        <a href="/webapps/drivertools/vehicle" class="btn btn-sm btn-light active" role="button" aria-pressed="true">Vehicle</a> &nbsp;
+        <a href="/webapps/drivertools/goals" class="btn btn-sm btn-light active" role="button" aria-pressed="true">Goals</a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
+
+                <!-- Move to right sidebar -->
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/webapps">Apps</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+
+                <li class="nav-item"><a class="nav-link" href="/">DRIVER TOOLS MENU</a></li>
+                
+                <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        SLYCODER MENU
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/">Home</a>
+          <a class="dropdown-item" href="/about">About</a>
+          <a class="dropdown-item" href="/contact">Contact</a>
+          <a class="dropdown-item" href="/webapps">Apps</a>
+          <a class="dropdown-item" href="/resources">Resources</a>
+        </div>
+      </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

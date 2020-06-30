@@ -27,6 +27,15 @@ Vue.component('footer-component', require('./components/FooterComponent.vue').de
 Vue.component('alpha-component', require('./components/WebApps/AlphaComponent.vue').default);
 Vue.component('foodbank-component', require('./components/WebApps/FoodbankComponent.vue').default);
 
+Vue.component(
+	'drivertools-calculator-component',
+	require('./components/WebApps/DriverToolsCalculatorComponent.vue').default
+);
+
+Vue.component('drivertools-count-component', require('./components/WebApps/DriverToolsCountComponent.vue').default);
+
+Vue.component('drivertools-vehicle-component', require('./components/WebApps/DriverToolsVehicleComponent.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

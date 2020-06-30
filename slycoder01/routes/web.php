@@ -17,8 +17,11 @@ Route::get('/contact', 'PagesController@contact');
 Route::get('/webapps', 'PagesController@webapps');
 Route::get('/resources', 'PagesController@resources');
 
-
-Route::get('/superadmin', 'SuperAdminController@index');
+Route::get('/webapps/drivertools', 'DriverToolsController@index');
+Route::get('/webapps/drivertools/calculator', 'DriverToolsController@index');
+Route::get('/webapps/drivertools/count', 'DriverToolsController@count');
+Route::get('/webapps/drivertools/vehicle', 'DriverToolsController@vehicle');
+Route::get('/webapps/drivertools/goals', 'DriverToolsController@goals');
 
 
 Route::get('/webapps/alpha', 'PagesController@alpha');
@@ -26,6 +29,10 @@ Route::get('/webapps/alpha', 'PagesController@alpha');
 //Route::get('/webapps/showfoodbank', 'FoodBanksController@getFoodBanks');
 //Route::get('/webapps/fb/show', 'FoodBanksController@show');
 Route::get('/webapps/foodbank', 'FoodBanksController@index');
+
+
+
+
 // admin area 
 
 //Route::prefix('/admin')->group(function () {
@@ -56,6 +63,7 @@ Route::get('/webapps/foodbank', 'FoodBanksController@index');
         Route::group(['middleware' => 'role:SLY_SUPERADMIN'], function(){
 
             Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin');
+            //Route::get('/superadmin', 'SuperAdminController@index');
     
         });
 

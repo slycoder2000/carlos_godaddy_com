@@ -26,7 +26,7 @@
             </li>
             <li>
 
-                <a href="apps/driver/index.php">Driver Tools</a> - Tools used for driving for Uber, Lyft or
+                <a href="/webapps/drivertools">Driver Tools</a> - Tools used for driving for Uber, Lyft or
                 Food
                 Delivery.
                 <ul>

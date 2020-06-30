@@ -15,11 +15,6 @@
                     @endif
 
 
-                    <h4>All Users</h4>
-                    <ul>
-                        <li><a href="/displayusers">Show Users</a></li>
-                    </ul>
-                    <br/>
 
                     <h3>WebApps Admin</h3>
                     <h4>Foodbanks</h4>

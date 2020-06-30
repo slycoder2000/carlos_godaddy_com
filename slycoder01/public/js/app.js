@@ -2103,6 +2103,517 @@ function isEmpty(obj) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      STORAGE_KEY: 'driver-calculator-storage',
+      spreadsheet: '',
+      lineitems: [],
+      totalAmount: 0,
+      calcItems: [],
+      xferFrom: -1,
+      xferTo: -1,
+      mxfer: false
+    };
+  },
+  created: function created() {
+    //localStorage.removeItem(this.STORAGE_KEY);
+    this.lineitems = JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]'); // if lineitems is empty, create array of 14 rows (0-13)
+
+    console.log(this.isEmpty(this.lineitems));
+
+    if (this.isEmpty(this.lineitems)) {
+      for (var cntr = 0; cntr < 20; cntr++) {
+        this.lineitems.push({
+          desc: '',
+          id: cntr,
+          amount: '',
+          pos: false,
+          calc: true
+        });
+      }
+
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.lineitems));
+    }
+
+    this.calcTotalAmount();
+  },
+  methods: {
+    isEmpty: function isEmpty(obj) {
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) return false;
+      }
+
+      return true;
+    },
+    freshenCheckbox: function freshenCheckbox(id, chkBoxVal) {
+      this.lineitems[id].calc = !chkBoxVal; //alert(id + '  ' + chkBoxVal);
+
+      this.syncAllCheckBoxes();
+      this.calcTotalAmount();
+    },
+    syncAllCheckBoxes: function syncAllCheckBoxes() {
+      var items = document.getElementsByName('acs');
+      var selectedItems = '';
+
+      for (var i = 0; i < items.length; i++) {
+        //if (items[i].type == 'checkbox' && items[i].checked == true)
+        if (items[i].checked != this.lineitems[i].calc) this.lineitems[i].calc = items[i].checked; //selectedItems += items[i].checked + ' ' + this.lineitems[i].calc + '\n';
+      } //console.log(items);
+      //console.log(items[6].checked);
+      //console.log(items.length);
+      //alert(selectedItems);
+
+    },
+    saveRow: function saveRow() {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.lineitems)); //this.freshenCheckbox();
+    },
+    addRow: function addRow(cntr) {
+      this.lineitems.push({
+        desc: '',
+        id: cntr,
+        amount: '',
+        pos: false,
+        calc: true
+      });
+    },
+    fpArithmetic: function fpArithmetic(op, x, y) {
+      var n = {
+        '*': x * y,
+        '-': x - y,
+        '+': x + y,
+        '/': x / y
+      }[op];
+      return Math.round(n * 100) / 100;
+    },
+    calcTotalAmount: function calcTotalAmount() {
+      var _this = this;
+
+      this.totalAmount = 0;
+      var ttlAmount = 0;
+      var filteredItems = [];
+      filteredItems = this.lineitems.filter(function (item) {
+        return item.calc == true && item.amount != '';
+      });
+      ttlAmount = filteredItems.reduce(function (currentTotal, item) {
+        return _this.fpArithmetic('+', parseFloat(item.amount), parseFloat(currentTotal));
+      }, 0);
+      console.log(ttlAmount);
+      this.totalAmount = ttlAmount;
+      console.log(this.totalAmount);
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.lineitems));
+    },
+    transfer: function transfer(checkedItem) {
+      // transferring from one line item to the next requires
+      // memorizing where to copy the value from and to
+      // clearing the from value
+      //console.log(checkedItem);
+      if (checkedItem == true) {
+        // let foundFirstColumn = -1;
+        // let foundLastColumn = -1;
+        // this.lineitems.forEach(function(value, i) {
+        // 	//console.log('%d: %s %s', i, value.pos, value.calc);
+        // 	if (foundFirstColumn == -1 && value.pos) foundFirstColumn = i;
+        // 	if (foundLastColumn == -1 && value.calc) foundLastColumn = i;
+        // });
+        alert(checkedItem);
+
+        if (this.transferFromToColumns()) {
+          //console.log(this.checkedRow(pos), this.checkedRow(calc));
+          //console.log(this.lineitems[3].amount, this.lineitem[0].desc);
+          alert('transfer');
+          this.lineitems[0].amount = '11.01'; //this.processTransfer(100, 1);
+
+          localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.lineitems));
+        } else {
+          alert('Please check items in last and first columns.'); //this.clearFirstColumnCheckboxes();
+        }
+      }
+    },
+    transferFromToColumns: function transferFromToColumns() {
+      this.xferFrom = -1;
+      this.xferTo = -1;
+      var foundItem = [];
+      foundItem = this.lineitems.find(function (item) {
+        return item.pos === true;
+      });
+
+      if (!this.isEmpty(foundItem)) {
+        console.log(foundItem.id);
+        this.xferFrom = foundItem.id;
+      }
+
+      foundItem = this.lineitems.find(function (item) {
+        return item.calc === true;
+      });
+
+      if (!this.isEmpty(foundItem)) {
+        console.log(foundItem);
+        this.xferTo = foundItem.id;
+      }
+
+      if (this.xferFrom != -1 && this.xferTo != -1) {
+        return true; // success
+      } else {
+        return false; // failed
+      }
+    },
+    processTransfer: function processTransfer(amount, to) {},
+    clearFirstColumnCheckboxes: function clearFirstColumnCheckboxes() {
+      this.lineitems.forEach(function (lineitem) {//lineitem.pos = false;
+      });
+    },
+    mtransfer: function mtransfer() {
+      //alert('xfer');
+      closeSideMenu();
+      this.clearFirstColumnCheckboxes(); // change bg orange
+
+      document.body.style.background = 'orange'; // wait for click - store value
+      // change bg blue
+
+      document.body.style.background = 'blue'; // wait for click - store value
+      // change bg grey
+
+      document.body.style.background = '#ccc';
+    },
+    eraseLocalStorage: function eraseLocalStorage() {
+      //alert('erasing');
+      localStorage.removeItem(this.STORAGE_KEY);
+      this.lineitems = JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]'); // if lineitems is empty, create array of 14 rows (0-13)
+
+      console.log(this.isEmpty(this.lineitems));
+
+      if (this.isEmpty(this.lineitems)) {
+        for (var cntr = 0; cntr < 20; cntr++) {
+          this.addRow();
+        }
+      }
+
+      this.calcTotalAmount();
+      closeSideMenu();
+    }
+  },
+  watch: {},
+  computed: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      STORAGE_KEY: 'driver-count-storage',
+      spreadsheet: '',
+      lineitems: [],
+      totalAmount: '0',
+      goal: '0',
+      goalDays: '0',
+      diffGoalTotalAmount: '0',
+      goalEachDay: '0'
+    };
+  },
+  created: function created() {
+    //localStorage.removeItem(this.STORAGE_KEY);
+    //console.log(this.STORAGE_KEY + '-goal');
+    this.lineitems = JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]');
+    this.goal = localStorage.getItem(this.STORAGE_KEY + '-goal');
+    this.goalDays = localStorage.getItem(this.STORAGE_KEY + '-goal-days'); // if lineitems is empty, create array of 14 rows (0-13)
+    // console.log(this.isEmpty(this.lineitems));
+
+    if (this.isEmpty(this.lineitems)) {
+      for (var cntr = 0; cntr < 3; cntr++) {
+        this.lineitems.push({
+          id: cntr,
+          desc: '',
+          amount: ''
+        });
+      }
+    }
+
+    this.goal = this.isEmpty(this.goal) ? '0' : this.goal;
+    this.goalDays = this.isEmpty(this.goalDays) ? '0' : this.goalDays;
+    this.calcTotalAmount();
+  },
+  methods: {
+    isEmpty: function isEmpty(obj) {
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) return false;
+      }
+
+      return true;
+    },
+    increment: function increment(id) {
+      this.lineitems[id].amount++;
+      console.log(id);
+      this.calcTotalAmount();
+    },
+    decrement: function decrement(id) {
+      if (parseInt(this.lineitems[id].amount) > 0) {
+        this.lineitems[id].amount--;
+      }
+
+      console.log(id);
+      this.calcTotalAmount();
+    },
+    calcTotalAmount: function calcTotalAmount() {
+      this.totalAmount = 0;
+
+      for (var cntr = 0; cntr < 3; cntr++) {
+        this.totalAmount = parseInt(this.totalAmount) + parseInt(this.lineitems[cntr].amount);
+      }
+
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.lineitems));
+      this.saveGoal();
+    },
+    saveGoal: function saveGoal() {
+      this.diffGoalTotalAmount = parseInt(this.goal) - parseInt(this.totalAmount);
+      this.goalEachDay = Math.ceil(this.diffGoalTotalAmount / this.goalDays);
+      localStorage.setItem(this.STORAGE_KEY + '-goal', this.goal);
+      localStorage.setItem(this.STORAGE_KEY + '-goal-days', this.goalDays);
+    },
+    eraseLocalStorage: function eraseLocalStorage() {
+      //alert('erasing');
+      localStorage.removeItem(this.STORAGE_KEY);
+      this.lineitems = JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]'); // if lineitems is empty, create array of 14 rows (0-13)
+
+      console.log(this.isEmpty(this.lineitems));
+
+      if (this.isEmpty(this.lineitems)) {
+        for (var cntr = 0; cntr < 20; cntr++) {
+          this.addRow();
+        }
+      }
+
+      this.calcTotalAmount();
+      closeSideMenu();
+    }
+  },
+  computed: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      STORAGE_KEY: 'driver-vehicle-storage',
+      spreadsheet: '',
+      lineitems: [{
+        mileage: 1000
+      }, {
+        mileage: 3000
+      }, {
+        mileage: 5000
+      }],
+      oilChangeFrequency: 2000
+    };
+  },
+  created: function created() {
+    //localStorage.removeItem(this.STORAGE_KEY);
+    //console.log(this.STORAGE_KEY + '-goal');
+    this.lineitems = JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[{ mileage: 1000 }, { mileage: 3000 }, { mileage: 5000 }]'); //this.mileage = localStorage.getItem(this.STORAGE_KEY + '-mileage');
+
+    this.oilChangeFrequency = localStorage.getItem(this.STORAGE_KEY + '-oil-change-frequency');
+    this.calcTotalAmount();
+  },
+  methods: {
+    isEmpty: function isEmpty(obj) {
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) return false;
+      }
+
+      return true;
+    },
+    calcTotalAmount: function calcTotalAmount() {
+      this.totalAmount = 0; //			for (let cntr = 0; cntr < 3; cntr++) {
+      //				this.totalAmount = parseInt(this.totalAmount) + parseInt(this.lineitems[cntr].amount);
+      //			}
+
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.lineitems));
+      this.saveMileage();
+    },
+    saveMileage: function saveMileage() {
+      //this.diffGoalTotalAmount = parseInt(this.goal) - parseInt(this.totalAmount);
+      //this.goalEachDay = Math.ceil(this.diffGoalTotalAmount / this.goalDays);
+      localStorage.setItem(this.STORAGE_KEY + '-oil-change-frequency', this.oilChangeFrequency);
+    },
+    eraseLocalStorage: function eraseLocalStorage() {
+      //alert('erasing');
+      localStorage.removeItem(this.STORAGE_KEY);
+      this.lineitems = JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]'); // if lineitems is empty, create array of 14 rows (0-13)
+
+      console.log(this.isEmpty(this.lineitems));
+
+      if (this.isEmpty(this.lineitems)) {
+        for (var cntr = 0; cntr < 20; cntr++) {
+          this.addRow();
+        }
+      }
+
+      this.calcTotalAmount();
+      closeSideMenu();
+    }
+  },
+  computed: {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/FoodbankComponent.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WebApps/FoodbankComponent.vue?vue&type=script&lang=js& ***!
@@ -38570,6 +39081,398 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=template&id=70bf20c8&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=template&id=70bf20c8&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    [
+      _vm._l(_vm.lineitems, function(lineitem) {
+        return _c(
+          "div",
+          {
+            key: lineitem.id,
+            staticClass: "lineitem row justify-content-md-center",
+            staticStyle: { height: "1.5rem" }
+          },
+          [
+            _c("div", { staticClass: "form-group col-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: lineitem.desc,
+                    expression: "lineitem.desc"
+                  }
+                ],
+                staticClass: "form-control form-control-sm",
+                staticStyle: { height: "1.5rem" },
+                attrs: { type: "text", placeholder: "desc" },
+                domProps: { value: lineitem.desc },
+                on: {
+                  change: function($event) {
+                    return _vm.saveRow()
+                  },
+                  keyup: function($event) {
+                    return _vm.saveRow()
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(lineitem, "desc", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group col-4 mb-3" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: lineitem.amount,
+                    expression: "lineitem.amount"
+                  }
+                ],
+                staticClass: "form-control form-control-sm",
+                staticStyle: { height: "1.5rem" },
+                attrs: { type: "text", placeholder: "amount" },
+                domProps: { value: lineitem.amount },
+                on: {
+                  change: function($event) {
+                    return _vm.calcTotalAmount()
+                  },
+                  keyup: function($event) {
+                    return _vm.calcTotalAmount()
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(lineitem, "amount", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group-append" }, [
+                _c("div", { staticClass: "input-group-text" }, [
+                  _c("input", {
+                    attrs: { type: "checkbox", name: "acs" },
+                    domProps: { checked: lineitem.calc },
+                    on: {
+                      input: function($event) {
+                        return _vm.freshenCheckbox(lineitem.id, lineitem.calc)
+                      }
+                    }
+                  })
+                ])
+              ])
+            ])
+          ]
+        )
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticStyle: {
+            border: "2px solid #000",
+            width: "300px",
+            "background-color": "#fff",
+            color: "#000",
+            "text-align": "center"
+          },
+          on: {
+            click: function($event) {
+              return _vm.syncAllCheckBoxes()
+            }
+          }
+        },
+        [_vm._v("\n\t\tTotal amount: " + _vm._s(_vm.totalAmount) + "\n\t")]
+      ),
+      _vm._v(" "),
+      _c("br")
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=template&id=2043e786&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=template&id=2043e786&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    { staticClass: "spreadsheet" },
+    [
+      _vm._l(_vm.lineitems, function(lineitem) {
+        return _c("div", { staticClass: "lineitem" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: lineitem.desc,
+                expression: "lineitem.desc"
+              }
+            ],
+            staticStyle: { width: "10em" },
+            attrs: { type: "text", placeholder: "desc" },
+            domProps: { value: lineitem.desc },
+            on: {
+              change: function($event) {
+                return _vm.calcTotalAmount()
+              },
+              keyup: function($event) {
+                return _vm.calcTotalAmount()
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(lineitem, "desc", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "button", value: "+" },
+            on: {
+              click: function($event) {
+                return _vm.increment(lineitem.id)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: lineitem.amount,
+                expression: "lineitem.amount"
+              }
+            ],
+            staticStyle: { width: "4em" },
+            attrs: { type: "text", placeholder: "amount" },
+            domProps: { value: lineitem.amount },
+            on: {
+              change: function($event) {
+                return _vm.calcTotalAmount()
+              },
+              keyup: function($event) {
+                return _vm.calcTotalAmount()
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(lineitem, "amount", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "button", value: "-" },
+            on: {
+              click: function($event) {
+                return _vm.decrement(lineitem.id)
+              }
+            }
+          }),
+          _c("br")
+        ])
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticStyle: { "font-size": "2em", "padding-left": "1em" } },
+        [_vm._v("Total Deliveries: " + _vm._s(_vm.totalAmount))]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticStyle: { "font-size": "2em", "padding-left": "1em" } },
+        [
+          _vm._v("\n\t\tGoal:\n\t\t"),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.goal,
+                expression: "goal"
+              }
+            ],
+            staticStyle: { width: "4em" },
+            attrs: { type: "text", placeholder: "amount" },
+            domProps: { value: _vm.goal },
+            on: {
+              change: function($event) {
+                return _vm.saveGoal()
+              },
+              keyup: function($event) {
+                return _vm.saveGoal()
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.goal = $event.target.value
+              }
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticStyle: { "font-size": "2em", "padding-left": "1em" } },
+        [_vm._v("Num to Reach Goal: " + _vm._s(_vm.diffGoalTotalAmount))]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticStyle: { "font-size": "2em", "padding-left": "1em" } },
+        [
+          _vm._v("\n\t\tGoal Days:\n\t\t"),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.goalDays,
+                expression: "goalDays"
+              }
+            ],
+            staticStyle: { width: "4em" },
+            attrs: { type: "text", placeholder: "amount" },
+            domProps: { value: _vm.goalDays },
+            on: {
+              change: function($event) {
+                return _vm.saveGoal()
+              },
+              keyup: function($event) {
+                return _vm.saveGoal()
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.goalDays = $event.target.value
+              }
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticStyle: { "font-size": "2em", "padding-left": "1em" } },
+        [_vm._v("Each Day: " + _vm._s(_vm.goalEachDay))]
+      )
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=template&id=54b94380&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=template&id=54b94380&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    { staticClass: "spreadsheet" },
+    _vm._l(_vm.lineitems, function(lineitem) {
+      return _c("div", { staticClass: "lineitem" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: lineitem.mileage,
+              expression: "lineitem.mileage"
+            }
+          ],
+          staticStyle: { width: "10em" },
+          attrs: { type: "text", placeholder: "mileage" },
+          domProps: { value: lineitem.mileage },
+          on: {
+            change: function($event) {
+              return _vm.calcTotalAmount()
+            },
+            keyup: function($event) {
+              return _vm.calcTotalAmount()
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(lineitem, "mileage", $event.target.value)
+            }
+          }
+        })
+      ])
+    }),
+    0
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/FoodbankComponent.vue?vue&type=template&id=106b2f9f&":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WebApps/FoodbankComponent.vue?vue&type=template&id=106b2f9f& ***!
@@ -50884,6 +51787,9 @@ Vue.component('services-component', __webpack_require__(/*! ./components/Service
 Vue.component('footer-component', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
 Vue.component('alpha-component', __webpack_require__(/*! ./components/WebApps/AlphaComponent.vue */ "./resources/js/components/WebApps/AlphaComponent.vue")["default"]);
 Vue.component('foodbank-component', __webpack_require__(/*! ./components/WebApps/FoodbankComponent.vue */ "./resources/js/components/WebApps/FoodbankComponent.vue")["default"]);
+Vue.component('drivertools-calculator-component', __webpack_require__(/*! ./components/WebApps/DriverToolsCalculatorComponent.vue */ "./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue")["default"]);
+Vue.component('drivertools-count-component', __webpack_require__(/*! ./components/WebApps/DriverToolsCountComponent.vue */ "./resources/js/components/WebApps/DriverToolsCountComponent.vue")["default"]);
+Vue.component('drivertools-vehicle-component', __webpack_require__(/*! ./components/WebApps/DriverToolsVehicleComponent.vue */ "./resources/js/components/WebApps/DriverToolsVehicleComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -51253,6 +52159,213 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DriverToolsCalculatorComponent_vue_vue_type_template_id_70bf20c8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DriverToolsCalculatorComponent.vue?vue&type=template&id=70bf20c8&scoped=true& */ "./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=template&id=70bf20c8&scoped=true&");
+/* harmony import */ var _DriverToolsCalculatorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DriverToolsCalculatorComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DriverToolsCalculatorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DriverToolsCalculatorComponent_vue_vue_type_template_id_70bf20c8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DriverToolsCalculatorComponent_vue_vue_type_template_id_70bf20c8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "70bf20c8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/WebApps/DriverToolsCalculatorComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCalculatorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DriverToolsCalculatorComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCalculatorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=template&id=70bf20c8&scoped=true&":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=template&id=70bf20c8&scoped=true& ***!
+  \***********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCalculatorComponent_vue_vue_type_template_id_70bf20c8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DriverToolsCalculatorComponent.vue?vue&type=template&id=70bf20c8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsCalculatorComponent.vue?vue&type=template&id=70bf20c8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCalculatorComponent_vue_vue_type_template_id_70bf20c8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCalculatorComponent_vue_vue_type_template_id_70bf20c8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/WebApps/DriverToolsCountComponent.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/WebApps/DriverToolsCountComponent.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DriverToolsCountComponent_vue_vue_type_template_id_2043e786_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DriverToolsCountComponent.vue?vue&type=template&id=2043e786&scoped=true& */ "./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=template&id=2043e786&scoped=true&");
+/* harmony import */ var _DriverToolsCountComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DriverToolsCountComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DriverToolsCountComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DriverToolsCountComponent_vue_vue_type_template_id_2043e786_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DriverToolsCountComponent_vue_vue_type_template_id_2043e786_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2043e786",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/WebApps/DriverToolsCountComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCountComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DriverToolsCountComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCountComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=template&id=2043e786&scoped=true&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=template&id=2043e786&scoped=true& ***!
+  \******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCountComponent_vue_vue_type_template_id_2043e786_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DriverToolsCountComponent.vue?vue&type=template&id=2043e786&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsCountComponent.vue?vue&type=template&id=2043e786&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCountComponent_vue_vue_type_template_id_2043e786_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsCountComponent_vue_vue_type_template_id_2043e786_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/WebApps/DriverToolsVehicleComponent.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/WebApps/DriverToolsVehicleComponent.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DriverToolsVehicleComponent_vue_vue_type_template_id_54b94380_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DriverToolsVehicleComponent.vue?vue&type=template&id=54b94380&scoped=true& */ "./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=template&id=54b94380&scoped=true&");
+/* harmony import */ var _DriverToolsVehicleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DriverToolsVehicleComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DriverToolsVehicleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DriverToolsVehicleComponent_vue_vue_type_template_id_54b94380_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DriverToolsVehicleComponent_vue_vue_type_template_id_54b94380_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "54b94380",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/WebApps/DriverToolsVehicleComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsVehicleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DriverToolsVehicleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsVehicleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=template&id=54b94380&scoped=true&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=template&id=54b94380&scoped=true& ***!
+  \********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsVehicleComponent_vue_vue_type_template_id_54b94380_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DriverToolsVehicleComponent.vue?vue&type=template&id=54b94380&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WebApps/DriverToolsVehicleComponent.vue?vue&type=template&id=54b94380&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsVehicleComponent_vue_vue_type_template_id_54b94380_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DriverToolsVehicleComponent_vue_vue_type_template_id_54b94380_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/WebApps/FoodbankComponent.vue":
 /*!***************************************************************!*\
   !*** ./resources/js/components/WebApps/FoodbankComponent.vue ***!
@@ -51427,8 +52540,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\SlyWolf\Documents\GitHub\carlos_godaddy_com\slycoder01\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\SlyWolf\Documents\GitHub\carlos_godaddy_com\slycoder01\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\sly\Documents\GitHub\carlos_godaddy_com\slycoder01\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\sly\Documents\GitHub\carlos_godaddy_com\slycoder01\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
