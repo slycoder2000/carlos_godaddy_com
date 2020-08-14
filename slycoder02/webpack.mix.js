@@ -11,8 +11,5 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/custom/calculator.js', 'public/js')
-    .js('resources/js/app.js', 'public/js').sourceMaps()
-    .sass('resources/sass/_custom.scss','public/css')
+mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
-

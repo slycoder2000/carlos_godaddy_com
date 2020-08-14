@@ -24,7 +24,7 @@ Route::get('/webapps/drivertools/vehicle', 'DriverToolsController@vehicle');
 Route::get('/webapps/drivertools/goals', 'DriverToolsController@goals');
 
 Route::get('/webapps/dance', 'DancesController@index');
-Route::post('/webapps/dance/search', ['as' => 'searchDances', 'uses' =>'DancesController@search']);
+Route::get('/webapps/dance/search', 'DancesController@search');
 
 Route::get('/webapps/alpha', 'PagesController@alpha');
 //Route::get('/webapps/foodbank', 'PagesController@foodbank');

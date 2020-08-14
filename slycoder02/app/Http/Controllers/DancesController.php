@@ -40,22 +40,7 @@ class DancesController extends Controller
         return view("dance.home")->with($data);
     }
 
-    public function search(Request $request) {
-//$request ->get('searchRequest');
-       
-        // $data =[
-        // 'dances'=>dance::where('dance', 'like', '%' . $request ->get('searchRequest')  . '%' )->get()
-        // ];
-        
-        // return json_encode( $data );
-  
-  
-        $dances = dance::where('dance', 'like', '%' . $request ->get('searchRequest')  . '%' )->get();
-        return json_encode( $dances );
-  
-    }
-
-    public function searchOLD()
+    public function search()
     {
         //
         $search = $_GET['search'];
