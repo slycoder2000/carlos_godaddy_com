@@ -32,6 +32,7 @@ Route::get('/webapps/alpha', 'PagesController@alpha');
 //Route::get('/webapps/fb/show', 'FoodBanksController@show');
 Route::get('/webapps/foodbank', 'FoodBanksController@index');
 
+Route::get('/webapps/vue01','VueController@index');
 
 Route::get('/family', 'FamilyController@home');
 Route::get('/family/index', 'FamilyController@home');

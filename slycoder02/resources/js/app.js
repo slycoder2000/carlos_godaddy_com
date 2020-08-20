@@ -32,6 +32,8 @@ Vue.component(
 	require('./components/WebApps/DriverToolsCalculatorComponent.vue').default
 );
 
+Vue.component('vue01-component', require('./components/Vue01Component.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

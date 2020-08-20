@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Dance;
 
-class DancesController extends Controller
+class VueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,43 +14,10 @@ class DancesController extends Controller
     public function index()
     {
         //
-        //return Dance::orderBy('dance','asc');
-        //return Dance::all();
-
-        if(isset($_GET['filter'])) {
-            if($_GET['filter']==1) {
-                $data=[
-                    'title' => 'Line Dances',
-                    'dances' => dance::where('rosefav',1)->orderBy('dance','asc')->paginate(20)
-                    ];
-            } else {
-                $data=[
-                    'title' => 'Line Dances',
-                    'dances' => dance::orderBy('dance','asc')->paginate(20)
-                    ];
-        
-            }
-                
-        } else {
-        $data=[
-            'title' => 'Line Dances',
-            'dances' => dance::orderBy('dance','asc')->paginate(20)
-            ];
-        }
-        return view("dance.home")->with($data);
-    }
-
-    public function search()
-    {
-        //
-        $search = $_GET['search'];
-        //dd($search);
-        //$search="fault";
-        $data=[
-            'title' => 'Line Dances',
-            'dances' => dance::where('dance','like' , '%' . $search . '%')->paginate(20)
-            ];
-        return view("dance.home")->with($data);
+        $data = array (
+            'title' => 'Welcome to SlyCoder.com!!',
+        );
+        return view('webapps.vue_examples.home')->with($data);
     }
 
     /**
@@ -119,12 +85,4 @@ class DancesController extends Controller
     {
         //
     }
-    public function getDances()
-    {
-        //
-        //return Dance::orderBy('dance','asc');
-        return Dance::all();
-    }
-
-
 }
